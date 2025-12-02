@@ -8,7 +8,7 @@ LOG_FILE="/tmp/sync-dotfiles.log"
 echo "=== Sincronización iniciada: $(date) ===" | tee -a "$LOG_FILE"
 
 # Crear directorios
-for dir in nixos zsh config scripts; do
+for dir in nixos zsh wezterm config scripts; do
     mkdir -p "$REPO/$dir"
 done
 
@@ -16,9 +16,15 @@ done
 copy_file() {
     local src="$1"
     local dst="$2"
+    local use_sudo="${3:-false}"  # Parámetro opcional para usar sudo
+
+    local copy_cmd="cp"
+    if [ "$use_sudo" = "true" ]; then
+        copy_cmd="sudo cp"
+    fi
 
     if [ -f "$src" ]; then
-        if cp -f "$src" "$dst" 2>/dev/null; then
+        if $copy_cmd -f "$src" "$dst" 2>/dev/null; then
             echo "✅ Copiado: $(basename "$src")" | tee -a "$LOG_FILE"
             return 0
         else
@@ -35,11 +41,14 @@ copy_file() {
 echo "--- Copiando archivos ---" | tee -a "$LOG_FILE"
 
 # NixOS
-sudo cp -f /etc/nixos/configuration.nix "$REPO/nixos/" 2>&1 | tee -a "$LOG_FILE"
+copy_file "/etc/nixos/configuration.nix" "$REPO/nixos/" "true"
 
 # Zsh
 copy_file "$HOME/.zshrc" "$REPO/zsh/.zshrc"
 copy_file "$HOME/.p10k.zsh" "$REPO/zsh/.p10k.zsh"
+
+# Wezterm
+copy_file "$HOME/.config/wezterm/wezterm.lua" "$REPO/wezterm/wezterm.lua" "true"
 
 # Git operations
 echo "--- Operaciones Git ---" | tee -a "$LOG_FILE"
