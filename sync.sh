@@ -24,13 +24,13 @@ cp ~/.p10k.zsh ~/Repos/dotfiles/zsh/ 2>/dev/null || true
 # cp -r ~/.config/polybar ~/Repos/dotfiles/home/.config/ 2>/dev/null || true
 
 # Scripts personales
-mkdir -p ~/Repos/dotfiles/home/scripts
-cp -r ~/scripts/* ~/dotfiles/home/scripts/ 2>/dev/null || true
+# mkdir -p ~/Repos/dotfiles/home/scripts
+# cp -r ~/scripts/* ~/dotfiles/home/scripts/ 2>/dev/null || true
 
 # --- SUBIR A GIT ---
 cd ~/Repos/dotfiles
 git add .
 git commit -m "Update: $(date '+%Y-%m-%d %H:%M:%S')"
-git push
+git push origin main
 
 echo "✅ ¡Todo sincronizado en GitHub!"
