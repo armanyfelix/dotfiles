@@ -7,7 +7,7 @@ echo "🚀 Sincronizando dotfiles..."
 
 # --- CONFIGURACIÓN NIXOS ---
 echo "📦 Copiando configuración NixOS..."
-sudo cp -r /etc/nixos/configuration.nix* ~/Repos/dotfiles/nixos/ 2>/dev/null || true
+sudo cp -r /etc/nixos/configuration.nix ~/Repos/dotfiles/nixos/ 2>/dev/null || true
 
 # --- CONFIGURACIONES DE USUARIO ---
 echo "🏠 Copiando configuraciones de usuario..."
