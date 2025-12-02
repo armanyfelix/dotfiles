@@ -44,7 +44,7 @@
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
-    variant = "";
+    variant = "intl";
   };
 
   # Enable CUPS to print documents.
@@ -215,16 +215,24 @@
 
   fonts = {
     packages = with pkgs; [
+      nerd-fonts._0xproto
       nerd-fonts.terminess-ttf
-      nerd-fonts.blex-mono
-      ibm-plex
+      nerd-fonts.go-mono
+      nerd-fonts.iosevka
+      nerd-fonts.iosevka-term
+      nerd-fonts.iosevka-term-slab
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.monofur
+      nerd-fonts.tinos
+      nerd-fonts.departure-mono
+      monaspace
       openmoji-color
     ];
     fontconfig = {
         defaultFonts = {
-          sansSerif = [ "IBM Plex Sans" ];
-          serif = [ "IBM Plex Serif" ];
-          monospace = [ "Terminess Nerd Font" ];
+          sansSerif = [ "0xProto Nerd Font" ];
+          serif = [ "Tinos Nerd Font" ];
+          monospace = [ "JetBrainsMono Nerd Font" ];
           emoji = [ "OpenMoji Color" ];
         };
     };
