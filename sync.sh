@@ -7,18 +7,19 @@ echo "🚀 Sincronizando dotfiles..."
 
 # --- CONFIGURACIÓN NIXOS ---
 echo "📦 Copiando configuración NixOS..."
-sudo cp -r /etc/nixos/* ~/Repos/dotfiles/nixos/ 2>/dev/null || true
+sudo cp -r /etc/nixos/configuration.nix* ~/Repos/dotfiles/nixos/ 2>/dev/null || true
 
 # --- CONFIGURACIONES DE USUARIO ---
 echo "🏠 Copiando configuraciones de usuario..."
 
 # Zsh
-cp ~/.zshrc ~/Repos/dotfiles/home/ 2>/dev/null || true
+cp ~/.zshrc ~/Repos/dotfiles/zsh/ 2>/dev/null || true
+cp ~/.p10k.zsh ~/Repos/dotfiles/zsh/ 2>/dev/null || true
 
 # Configuraciones comunes
-mkdir -p ~/Repos/dotfiles/home/.config
-cp -r ~/.config/nvim ~/Repos/dotfiles/home/.config/ 2>/dev/null || true
-cp -r ~/.config/kitty ~/Repos/dotfiles/home/.config/ 2>/dev/null || true
+# mkdir -p ~/Repos/dotfiles/home/.config
+# cp -r ~/.config/nvim ~/Repos/dotfiles/home/.config/ 2>/dev/null || true
+# cp -r ~/.config/kitty ~/Repos/dotfiles/home/.config/ 2>/dev/null || true
 # cp -r ~/.config/i3 ~/Repos/dotfiles/home/.config/ 2>/dev/null || true
 # cp -r ~/.config/polybar ~/Repos/dotfiles/home/.config/ 2>/dev/null || true
 
