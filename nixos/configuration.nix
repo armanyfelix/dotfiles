@@ -85,6 +85,8 @@
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "lafv";
 
+  programs.kdeconnect.enable = true;
+
   # Install firefox.
   programs.firefox.enable = false;
 

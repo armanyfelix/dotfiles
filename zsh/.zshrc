@@ -20,6 +20,8 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+eval "$(pay-respects zsh)"
+
 # Verificar si el agente está corriendo
 if [ -z "$SSH_AUTH_SOCK" ]; then
     eval "$(ssh-agent -s)"
