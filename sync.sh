@@ -75,7 +75,7 @@ setup_directories() {
     local categories=("zsh" "wezterm" "nixos")
 
     for category in "${categories[@]}"; do
-        local dir="$REPO_DIR/$category"
+        local dir="$REPO_DIR/backup/$category"
         if [ ! -d "$dir" ]; then
             echo "Creando directorio: $dir"
             mkdir -p "$dir"
@@ -96,7 +96,7 @@ setup_directories() {
 backup_file() {
     local source_file="$1"
     local dest_rel_path="$2"
-    local dest_file="$REPO_DIR/$dest_rel_path"
+    local dest_file="$REPO_DIR/backup/$dest_rel_path"
 
     echo "Procesando: $source_file -> $dest_file"
 
@@ -323,24 +323,17 @@ main() {
     log_message "=== INICIO DE EJECUCIÓN ==="
 
     # Crear estructura de directorios
-    echo "Paso 1: Creando directorios..."
     setup_directories
 
     # Realizar backup de archivos
-    echo -e "\nPaso 2: Respaldando archivos..."
     perform_backup
 
     # Operaciones Git
-    echo -e "\nPaso 3: Operaciones Git..."
     git_operations
 
     # Mostrar estructura final
-    echo -e "\nPaso 4: Mostrando resumen..."
-    show_final_summary
+    # show_final_summary
 
-    echo "=========================================="
-    echo "🎉 BACKUP COMPLETADO"
-    echo "=========================================="
     echo -e "${GREEN}✨ ¡Tus dotfiles están respaldados y versionados!${NC}"
     echo ""
     echo "📋 Log guardado en: $LOG_FILE"
