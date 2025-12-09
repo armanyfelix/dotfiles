@@ -7,7 +7,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      /etc/nixos/hardware-configuration.nix
     ];
 
   # Bootloader.
@@ -16,6 +16,28 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        # Shows battery charge of connected devices on supported
+        # Bluetooth adapters. Defaults to 'false'.
+        Experimental = true;
+        # When enabled other devices can connect faster to us, however
+        # the tradeoff is increased power consumption. Defaults to
+        # 'false'.
+        FastConnectable = true;
+      };
+      Policy = {
+        # Enable all controllers when they are found. This includes
+        # adapters present on start as well as adapters that are plugged
+        # in later on. Defaults to 'true'.
+        AutoEnable = true;
+      };
+    };
+  };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -38,8 +60,12 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
+
+  # Active broser plasma integration, not working wuth floorp
+  # nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -65,6 +91,11 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
+  # Flatpak just to install zen
+  services.flatpak.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.config.common.default = "gtk";
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -92,6 +123,82 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # List packages installed in system profile. To search, run:
+  # $ nix search wget
+  environment.systemPackages = with pkgs; [
+    neovim
+    wget
+    git
+    nodejs_24
+    pnpm
+    bun
+    cargo
+    kitty
+    floorp
+    neofetch
+    zed-editor
+    obs-studio
+    btop
+    cmatrix
+    pay-respects
+    wezterm
+    kdePackages.plasma-browser-integration
+    libsForQt5.qtstyleplugin-kvantum
+    zoxide
+    vlc
+    # shira
+    signal-desktop
+    blender
+    # (import ./kvantum.nix pkgs)
+    (pkgs.writeShellScriptBin "zed" ''
+      exec ${pkgs.zed-editor}/libexec/zed-editor "$@"
+    '')
+  ];
+
+  fonts = {
+    packages = with pkgs; [
+      nerd-fonts._0xproto
+      nerd-fonts.terminess-ttf
+      nerd-fonts.go-mono
+      nerd-fonts.iosevka
+      nerd-fonts.iosevka-term
+      nerd-fonts.iosevka-term-slab
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.monofur
+      nerd-fonts.tinos
+      nerd-fonts.departure-mono
+      monaspace
+      inter
+      openmoji-color
+      open-sans
+    ];
+    fontconfig = {
+        defaultFonts = {
+          sansSerif = [ "Inter" ];
+          serif = [ "Inter Serif" ];
+          monospace = [ "JetBrainsMono Nerd Font" ];
+          emoji = [ "OpenMoji Color" ];
+        };
+    };
+    enableDefaultPackages = true;
+  };
+
+  # Some programs need SUID wrappers, can be configured further or are
+  # started in user sessions.
+  # programs.mtr.enable = true;
+  # programs.gnupg.agent = {
+  #   enable = true;
+  #   enableSSHSupport = true;
+  # };
+
+  # List services that you want to enable:
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
 
   programs.zsh = {
     enable = true;
@@ -139,7 +246,7 @@
     # 🚀 ALIASES ESPECÍFICOS PARA TU STACK
     shellAliases = {
       # NixOS
-      nix-search = "nix search nixpkgs";
+      nix-search = "nix search nixpkgs --extra-experimental-features";
       nix-update = "sudo nix-channel --update";
       nix-rebuild = "sudo nixos-rebuild switch";
       nix-opt = "sudo nix-collect-garbage --delete-older-than 7d";
@@ -147,7 +254,6 @@
 
       # Editores
       vim = "nvim";
-      z = "zed";
 
       # Node.js ecosystem
       nr = "npm run";
@@ -191,65 +297,6 @@
   users.defaultUserShell = pkgs.zsh;
 
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    git
-    nodejs_24
-    pnpm
-    bun
-    cargo
-    kitty
-    floorp
-    neofetch
-    zed-editor
-    obs-studio
-    btop
-    cmatrix
-    pay-respects
-    wezterm
-    (pkgs.writeShellScriptBin "zed" ''
-      exec ${pkgs.zed-editor}/libexec/zed-editor "$@"
-    '')
-  ];
-
-  fonts = {
-    packages = with pkgs; [
-      nerd-fonts._0xproto
-      nerd-fonts.terminess-ttf
-      nerd-fonts.go-mono
-      nerd-fonts.iosevka
-      nerd-fonts.iosevka-term
-      nerd-fonts.iosevka-term-slab
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.monofur
-      nerd-fonts.tinos
-      nerd-fonts.departure-mono
-      monaspace
-      openmoji-color
-    ];
-    fontconfig = {
-        defaultFonts = {
-          sansSerif = [ "0xProto Nerd Font" ];
-          serif = [ "Tinos Nerd Font" ];
-          monospace = [ "JetBrainsMono Nerd Font" ];
-          emoji = [ "OpenMoji Color" ];
-        };
-    };
-    enableDefaultPackages = true;
-  };
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

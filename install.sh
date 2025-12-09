@@ -91,7 +91,7 @@ create_symlink() {
     mkdir -p "$(dirname "$target")"
 
     # Hacer backup si existe
-    backup_existing "$target" "$source"
+#     backup_existing "$target" "$source"
 
     # Crear symlink
     if [[ "$target" == "/etc/nixos/"* ]]; then
@@ -185,6 +185,9 @@ main() {
 
     # Verificar instalación
     verify_installation
+
+    # Clonar powerlevel10k
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
     # Resumen final
     print_header "🎉 INSTALACIÓN COMPLETADA"
