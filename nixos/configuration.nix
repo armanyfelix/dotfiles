@@ -150,6 +150,7 @@
     # shira
     signal-desktop
     blender
+    prismlauncher
     # (import ./kvantum.nix pkgs)
     (pkgs.writeShellScriptBin "zed" ''
       exec ${pkgs.zed-editor}/libexec/zed-editor "$@"
