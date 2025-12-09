@@ -57,21 +57,26 @@
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
+  services.xserver.enable = false;
 
   # Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
 
+  programs.niri.enable = true;
+
   # Active broser plasma integration, not working wuth floorp
   # nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "intl";
-  };
+  # services.xserver.xkb = {
+  #  layout = "us";
+  # variant = "intl";
+  # };
+
+  console.keyMap = "us";
+  # console.xkbVariant = "altgr-intl";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -150,7 +155,8 @@
     # shira
     signal-desktop
     blender
-    prismlauncher
+    xwayland-satellite
+    fuzzel
     # (import ./kvantum.nix pkgs)
     (pkgs.writeShellScriptBin "zed" ''
       exec ${pkgs.zed-editor}/libexec/zed-editor "$@"
