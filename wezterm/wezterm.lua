@@ -16,7 +16,7 @@ config.colors = {
 
 -- Apperance
 -- config.window_decorations = "RESIZE"
-config.color_scheme = "Firewatch"
+config.color_scheme = "flexoki-dark"
 config.hide_tab_bar_if_only_one_tab = true
 config.window_padding = {
   left = 0,

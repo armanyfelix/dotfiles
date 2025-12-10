@@ -175,6 +175,9 @@
     blender
     xwayland-satellite
     fuzzel
+    (yazi.override {
+      _7zz = _7zz-rar; # Support for RAR extraction
+    })
     # (import ./kvantum.nix pkgs)
     (pkgs.writeShellScriptBin "zed" ''
       exec ${pkgs.zed-editor}/libexec/zed-editor "$@"
