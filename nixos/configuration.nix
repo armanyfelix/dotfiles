@@ -1,4 +1,4 @@
-# Edit this configuration file to define what should be installed on
+ # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
@@ -16,8 +16,29 @@
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  
+  hardware.graphics.enable = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    prime = {
+      # PRIME Sync and Offload cannot be both enabled
+      # offload = {
+      # enable = true;
+      # enableOffloadCmd = true;
+      # };
+      sync.enable = true;
+      nvidiaBusId = "PCI:1:0:0";
+      amdgpuBusId = "PCI:5:0:0";
+    };
+  };
 
-  hardware.bluetooth = {
+   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
     settings = {
@@ -39,7 +60,7 @@
     };
   };
 
-  networking.hostName = "nixos"; # Define your hostname.
+   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -59,21 +80,22 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = false;
 
-  # Enable the KDE Plasma Desktop Environment.
+# Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true;
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+};
   programs.niri.enable = true;
 
   # Active broser plasma integration, not working wuth floorp
   # nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
 
-  # Configure keymap in X11
-  # services.xserver.xkb = {
-  #  layout = "us";
-  # variant = "intl";
-  # };
+# Configure keymap in X11
+# services.xserver.xkb = {
+#  layout = "us";
+# variant = "intl";
+# };
 
   console.keyMap = "us";
   # console.xkbVariant = "altgr-intl";
@@ -86,8 +108,8 @@
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
+    alsa.enable = false;
+    alsa.support32Bit = false;
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
@@ -103,7 +125,7 @@
   xdg.portal.config.common.default = "gtk";
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  # services.server.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lafv = {
@@ -122,11 +144,7 @@
   services.displayManager.autoLogin.user = "lafv";
 
   programs.kdeconnect.enable = true;
-
-  # Install firefox.
   programs.firefox.enable = false;
-
-  # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
