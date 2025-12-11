@@ -157,17 +157,15 @@
     pnpm
     bun
     cargo
-    kitty
-    floorp
-    neofetch
+    fastfetch
     zed-editor
     obs-studio
     btop
     cmatrix
     pay-respects
     wezterm
-    kdePackages.plasma-browser-integration
-    libsForQt5.qtstyleplugin-kvantum
+    # kdePackages.plasma-browser-integration
+    # libsForQt5.qtstyleplugin-kvantum
     zoxide
     vlc
     # shira
@@ -175,6 +173,7 @@
     blender
     xwayland-satellite
     fuzzel
+    chromium
     (yazi.override {
       _7zz = _7zz-rar; # Support for RAR extraction
     })
@@ -228,99 +227,85 @@
     dedicatedServer.openFirewall = true;
   };
 
-  programs.zsh = {
+programs.zsh = {
+  enable = true;
+  enableBashCompletion = true;
+  autosuggestions.enable = true;
+  syntaxHighlighting.enable = true;
+  ohMyZsh = {
     enable = true;
-    enableBashCompletion = true;
-    autosuggestions.enable = true;
-    syntaxHighlighting.enable = true;
-    ohMyZsh = {
-      enable = true;
-      plugins = [
-        # 🎯 ESENCIALES PARA TODOS
-        "git"               # Aliases git: gst, gaa, gcm, gl, gp, etc.
-        "sudo"              # Doble ESC para añadir sudo
-        "extract"           # `x archivo.zip` - extrae CUALQUIER cosa
-        "z"                 # Navegación inteligente: `z proyecto`
-        "history"           # `h`, `hsi busqueda` - historial fácil
-        "colored-man-pages" # Manuales a color (cero overhead)
-
-        # 🔧 PARA NIXOS
-        "command-not-found" # Te dice cómo instalar con nix
-
-        # ⚡ TU STACK DE DESARROLLO
-        "npm"               # Autocompletado npm/yarn/pnpm
-        "node"              # Shortcuts: `node-docs`, `npm-search`
-        "rust"              # Autocompletado cargo, `rc`, `rb`
-        "dotenv"            # load your project ENV variables from .env file when you cd into project root directory
-
-        # 🐳 DEVOPS/HERRAMIENTAS
-        "docker"            # Autocompletado docker/docker-compose
-        "docker-compose"    # Aliases: `dcup`, `dcdown`
-
-        # 💻 PRODUCTIVIDAD EDITORES
-        "vi-mode"           # Atajos vim en zsh (ideal para neovim/zed)
-        "copyfile"          # `copyfile archivo` copia contenido
-        "copypath"          # `copypath` copia ruta actual
-        "dirhistory"        # Navegación directorios con alt+←/→
-
-        # 🎨 EXTRAS ÚTILES
-        "web-search"        # `google algo`, `ddg algo`, `github algo`
-        "urltools"          # Encode/decode URLs: `urlencode`, `urldecode`
-        "jsontools"         # Formatear JSON: `pp_json`, `is_json`
-        ];
-      custom = "$HOME/.oh-my-zsh/custom/";
-      theme = "powerlevel10k/powerlevel10k";
-    };
-    # 🚀 ALIASES ESPECÍFICOS PARA TU STACK
-    shellAliases = {
-      # NixOS
-      nix-search = "nix search nixpkgs --extra-experimental-features";
-      nix-update = "sudo nix-channel --update";
-      nix-rebuild = "sudo nixos-rebuild switch";
-      nix-opt = "sudo nix-collect-garbage --delete-older-than 7d";
-      nix-shell-node = "nix-shell -p nodejs pnpm bun";
-
-      # Editores
-      vim = "nvim";
-
-      # Node.js ecosystem
-      nr = "npm run";
-      nd = "npm run dev";
-      nb = "npm run build";
-      nt = "npm test";
-      pn = "pnpm";
-      pnr = "pnpm run";
-      pnd = "npm run dev";
-      pnb = "npm run build";
-
-      # Rust
-      cb = "cargo build";
-      cr = "cargo run";
-      ct = "cargo test";
-      cf = "cargo fmt";
-      cc = "cargo check";
-
-      # Git shortcuts mejorados
-      gs = "git status";
-      ga = "git add";
-      gc = "git commit";
-      gp = "git push";
-      gl = "git log --oneline --graph";
-      gd = "git diff";
-      gco = "git checkout";
-      gcb = "git checkout -b";
-
-      # Sistema
-      top = "btop";
-      neo = "neofetch";
-      matrix = "cmatrix";
-      f = "pay-respects";
-
-      # Kitty
-      icat = "kitty +kitten icat";
-      diff = "kitty +kitten diff";
-    };
+    plugins = [
+      # 🎯 ESENCIALES PARA TODOS
+      "git"               # Aliases git: gst, gaa, gcm, gl, gp, etc.
+      "sudo"              # Doble ESC para añadir sudo
+      "extract"           # `x archivo.zip` - extrae CUALQUIER cosa
+      "z"                 # Navegación inteligente: `z proyecto`
+      "history"           # `h`, `hsi busqueda` - historial fácil
+      "colored-man-pages" # Manuales a color (cero overhead)
+      # 🔧 PARA NIXOS
+      "command-not-found" # Te dice cómo instalar con nix
+      # ⚡ TU STACK DE DESARROLLO
+      "npm"               # Autocompletado npm/yarn/pnpm
+      "node"              # Shortcuts: `node-docs`, `npm-search`
+      "rust"              # Autocompletado cargo, `rc`, `rb`
+      "dotenv"            # load your project ENV variables from .env file when you cd into project root directory
+      # 🐳 DEVOPS/HERRAMIENTAS
+      "docker"            # Autocompletado docker/docker-compose
+      "docker-compose"    # Aliases: `dcup`, `dcdown`
+      # 💻 PRODUCTIVIDAD EDITORES
+      "vi-mode"           # Atajos vim en zsh (ideal para neovim/zed)
+      "copyfile"          # `copyfile archivo` copia contenido
+      "copypath"          # `copypath` copia ruta actual
+      "dirhistory"        # Navegación directorios con alt+←/→
+      # 🎨 EXTRAS ÚTILES
+      "web-search"        # `google algo`, `ddg algo`, `github algo`
+      "urltools"          # Encode/decode URLs: `urlencode`, `urldecode`
+      "jsontools"         # Formatear JSON: `pp_json`, `is_json`
+    ];
+    custom = "$HOME/.oh-my-zsh/custom/";
+    theme = "powerlevel10k/powerlevel10k";
   };
+
+  shellAliases = {
+    # NixOS
+    ns = "nix search nixpkgs --extra-experimental-features";
+    nu = "sudo nix-channel --update";
+    nrs = "sudo nixos-rebuild switch";
+    nix-opt = "sudo nix-collect-garbage --delete-older-than 7d";
+    nix-shell-node = "nix-shell -p nodejs pnpm bun";
+    # Editores
+    v = "nvim";
+    # Node.js ecosystem
+    nd = "npm run dev";
+    nb = "npm run build";
+    nt = "npm test";
+    pn = "pnpm";
+    pnr = "pnpm run";
+    pnd = "npm run dev";
+    pnb = "npm run build";
+    # Rust
+    cb = "cargo build";
+    cr = "cargo run";
+    ct = "cargo test";
+    cf = "cargo fmt";
+    cc = "cargo check";
+    # Git shortcuts mejorados
+    gs = "git status";
+    ga = "git add";
+    gc = "git commit";
+    gp = "git push";
+    gl = "git log --oneline --graph";
+    gd = "git diff";
+    gco = "git checkout";
+    gcb = "git checkout -b";
+    # Sistema
+    top = "btop";
+    ff = "fastfetch";
+    matrix = "cmatrix";
+    f = "pay-respects";
+    nvidia-watch ="watch -n 2 nvidia-smi"; 
+  };
+};
 
   users.defaultUserShell = pkgs.zsh;
 
