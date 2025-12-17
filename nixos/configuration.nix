@@ -147,6 +147,12 @@
   programs.firefox.enable = false;
   nixpkgs.config.allowUnfree = true;
 
+  programs.gamescope.enable = true;
+  programs.gamemode.enable = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-36.9.5"
+  ];
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -174,6 +180,14 @@
     xwayland-satellite
     fuzzel
     chromium
+    kicad
+    obsidian
+    opencode
+    (heroic.override {
+      extraPkgs = pkgs: [
+	pkgs.gamescope
+      ];
+    })
     (yazi.override {
       _7zz = _7zz-rar; # Support for RAR extraction
     })
@@ -268,11 +282,12 @@ programs.zsh = {
 
   shellAliases = {
     # NixOS
-    ns = "nix search nixpkgs --extra-experimental-features";
+    np = "nix search nixpkgs --extra-experimental-features";
     nu = "sudo nix-channel --update";
     nrs = "sudo nixos-rebuild switch";
     nix-opt = "sudo nix-collect-garbage --delete-older-than 7d";
     nix-shell-node = "nix-shell -p nodejs pnpm bun";
+    ns = "nix-shell -p";
     # Editores
     v = "nvim";
     # Node.js ecosystem
