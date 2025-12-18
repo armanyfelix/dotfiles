@@ -88,6 +88,12 @@
 };
   programs.niri.enable = true;
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    glib
+    nspr
+    nss
+  ];
   # Active broser plasma integration, not working wuth floorp
   # nixpkgs.config.firefox.enablePlasmaBrowserIntegration = true;
 
@@ -135,7 +141,6 @@
     packages = with pkgs; [
       kdePackages.kate
       kdePackages.krunner
-    #  thunderbird
     ];
   };
 
@@ -183,6 +188,9 @@
     kicad
     obsidian
     opencode
+    thunderbird
+    wineWowPackages.stable
+    wineWowPackages.waylandFull
     (heroic.override {
       extraPkgs = pkgs: [
 	pkgs.gamescope

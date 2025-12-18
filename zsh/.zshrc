@@ -16,6 +16,7 @@ bindkey -v
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/lafv/.zshrc'
 
+# autoload -U tetris
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
