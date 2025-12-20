@@ -141,6 +141,7 @@
     packages = with pkgs; [
       kdePackages.kate
       kdePackages.krunner
+      discord
     ];
   };
 
@@ -184,13 +185,14 @@
     blender
     xwayland-satellite
     fuzzel
-    chromium
     kicad
+    brave
     obsidian
     opencode
     thunderbird
     wineWowPackages.stable
     wineWowPackages.waylandFull
+    dbeaver-bin
     (heroic.override {
       extraPkgs = pkgs: [
 	pkgs.gamescope
