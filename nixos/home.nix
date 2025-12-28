@@ -4,6 +4,7 @@
   home.username = "lafv";
   home.homeDirectory = "/home/lafv";
   home.stateVersion = "25.05";
+  programs.git.enable = true;
 
   home.file.".zshrc".source = /home/lafv/dotfiles/.zshrc;
   home.file.".p10k.zsh".source = /home/lafv/dotfiles/.p10k.zsh;
