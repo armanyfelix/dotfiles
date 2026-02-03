@@ -6,22 +6,35 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zed = {
+      url = "github:zed-industries/zed";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
+  outputs = { self, nixpkgs, home-manager, zed,  zen-browser, ... } @inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
+      specialArgs = { inherit inputs; };
       modules = [
-	./configuration.nix
-	home-manager.nixosModules.home-manager
-	{
-	  home-manager = {
-	    useGlobalsPkgs = true;
-	    useUserPackages = true;
-	    users.lafv = import ./home.nix;
-	    backupFileExtension = "backup";
-	  };
-	}
+        ./configuration.nix
+        home-manager.nixosModules.home-manager
+          {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
+                extraSpecialArgs = { inherit inputs; };
+                users.lafv = ./home.nix;
+              };
+          }
       ];
     };
   };

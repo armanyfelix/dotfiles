@@ -35,9 +35,10 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
     fi
 fi
 
-# fnm - Fast Node Manager
+# fnm - Fast Node Manager (not necesary on nix os)
 # export PATH="$HOME/.fnm:$PATH"
 # eval "$(fnm env --shell=zsh --use-on-cd)"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export NIX_SHELL='zsh -i'

@@ -1,5 +1,4 @@
-{ config, pkgs, ... }:
-
+{ config, inputs, pkgs, ... }:
 {
   home.username = "lafv";
   home.homeDirectory = "/home/lafv";
@@ -17,5 +16,10 @@
   home.packages = with pkgs; [
     tree
     bat
+#     inputs.zed.packages.${pkgs.system}.default
+#     inputs.zen-browser.packages.${pkgs.system}.default
   ];
+
+  # Let home Manager install and manage itself.
+  programs.home-manager.enable = true;
 }

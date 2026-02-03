@@ -1,8 +1,10 @@
-# Edit this configuration file to define what should be installed on
+ # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }:
+
+# Home Manager
 let
   home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz;
 in
@@ -12,8 +14,6 @@ in
       /etc/nixos/hardware-configuration.nix
       (import "${home-manager}/nixos")
     ];
-
-  # Home Manager
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs = true;
   home-manager.backupFileExtension = "backup";
@@ -25,7 +25,7 @@ in
 
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  
+
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
@@ -36,6 +36,11 @@ in
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     prime = {
+      # PRIME Sync and Offload cannot be both enabled
+      # offload = {
+      # enable = true;
+      # enableOffloadCmd = true;
+      # };
       sync.enable = true;
       nvidiaBusId = "PCI:1:0:0";
       amdgpuBusId = "PCI:5:0:0";
@@ -100,9 +105,6 @@ in
   ];
 
   console.keyMap = "us";
-  # console.xkbVariant = "altgr-intl";
-
-  # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable sound with pipewire.
@@ -114,7 +116,6 @@ in
     alsa.support32Bit = false;
     pulse.enable = true;
     #jack.enable = true;
-    #media-session.enable = true;
   };
 
   # Flatpak just to install zen
@@ -129,6 +130,7 @@ in
   users.users.lafv = {
     isNormalUser = true;
     description = "lafv";
+    shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
@@ -137,7 +139,6 @@ in
     ];
   };
 
-  # Enable automatic login for the user.
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "lafv";
 
@@ -150,56 +151,11 @@ in
   nixpkgs.config.permittedInsecurePackages = [
     "electron-36.9.5"
   ];
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    neovim
-    wget
-    git
-    nodejs_24
-    pnpm
-    bun
-    cargo
-    fastfetch
-    zed-editor
-    obs-studio
-    btop
-    cmatrix
-    pay-respects
-    wezterm
-    # kdePackages.plasma-browser-integration
-    # libsForQt5.qtstyleplugin-kvantum
-    zoxide
-    vlc
-    # shira
-    signal-desktop
-    blender
-    xwayland-satellite
-    fuzzel
-    kicad
-    brave
-    obsidian
-    opencode
-    thunderbird
-    wineWowPackages.stable
-    wineWowPackages.waylandFull
-    dbeaver-bin
-    emacs
-    stow
-    (heroic.override {
-      extraPkgs = pkgs: [
-	pkgs.gamescope
-      ];
-    })
-    (yazi.override {
-      _7zz = _7zz-rar; # Support for RAR extraction
-    })
-    # (import ./kvantum.nix pkgs)
-    (pkgs.writeShellScriptBin "zed" ''
-      exec ${pkgs.zed-editor}/libexec/zed-editor "$@"
-    '')
-  ];
+  environment.systemPackages = with pkgs;  import ./packages.nix { inherit pkgs; };
+
 
   fonts = {
     packages = with pkgs; [
@@ -237,6 +193,7 @@ in
   #   enableSSHSupport = true;
   # };
 
+  # List services that you want to enable:
   programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
@@ -335,7 +292,10 @@ programs.zsh = {
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+  };
+
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
