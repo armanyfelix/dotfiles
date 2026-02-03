@@ -21,12 +21,15 @@ with pkgs;   [
     kicad
     brave
     obsidian
-    opencode
+#     opencode
     thunderbird
     wineWowPackages.stable
     wineWowPackages.waylandFull
     dbeaver-bin
-    emacs
+#     emacs
+    kdePackages.kate
+    kdePackages.krunner
+    discord
     (heroic.override {
      extraPkgs = pkgs: [
      pkgs.gamescope

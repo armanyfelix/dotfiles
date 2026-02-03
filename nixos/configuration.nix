@@ -5,19 +5,19 @@
 { config, pkgs, ... }:
 
 # Home Manager
-let
-  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz;
-in
+# let
+#   home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz;
+# in
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+    # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
-      (import "${home-manager}/nixos")
     ];
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
-  home-manager.backupFileExtension = "backup";
-  home-manager.users.lafv = import ./home.nix;
+#   home-manager.useUserPackages = true;
+#   home-manager.useGlobalPkgs = true;
+#   home-manager.backupFileExtension = "backup";
+#   home-manager.users.lafv = import ./home.nix;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -132,11 +132,6 @@ in
     description = "lafv";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-      kdePackages.krunner
-      discord
-    ];
   };
 
   services.displayManager.autoLogin.enable = true;
