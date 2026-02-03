@@ -2,7 +2,7 @@
 {
   home.username = "lafv";
   home.homeDirectory = "/home/lafv";
-  home.stateVersion = "25.05";
+  home.stateVersion = "25.11";
   programs.git.enable = true;
 
   home.file.".zshrc".source = /home/lafv/dotfiles/.zshrc;
@@ -16,7 +16,7 @@
   home.packages = with pkgs; [
     tree
     bat
-#     inputs.zed.packages.${pkgs.system}.default
+    inputs.zed.packages.${pkgs.system}.default
 #     inputs.zen-browser.packages.${pkgs.system}.default
   ];
 
