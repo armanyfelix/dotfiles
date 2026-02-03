@@ -17,7 +17,7 @@
     tree
     bat
     inputs.zed.packages.${pkgs.stdenv.hostPlatform.system}.default
-#     inputs.zen-browser.packages.${pkgs.system}.default
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Let home Manager install and manage itself.
