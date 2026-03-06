@@ -1,5 +1,6 @@
 { pkgs, ... }:
 with pkgs;   [
+    unityhub
     neovim
     wget
     git
@@ -15,21 +16,18 @@ with pkgs;   [
     zoxide
     vlc
     signal-desktop
-    blender
     xwayland-satellite
     fuzzel
-    kicad
     brave
     obsidian
 #     opencode
     thunderbird
     wineWowPackages.stable
     wineWowPackages.waylandFull
-    dbeaver-bin
+    appflowy
 #     emacs
     kdePackages.kate
     kdePackages.krunner
-    discord
     (heroic.override {
      extraPkgs = pkgs: [
      pkgs.gamescope

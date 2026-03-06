@@ -42,3 +42,4 @@ fi
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 export NIX_SHELL='zsh -i'
+ZED_ALLOW_ROOT=true

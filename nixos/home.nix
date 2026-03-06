@@ -11,7 +11,7 @@
   home.file.".config/yazi".source = /home/lafv/dotfiles/.config/yazi;
   home.file.".config/niri".source = /home/lafv/dotfiles/.config/niri;
   home.file.".config/wezterm".source = /home/lafv/dotfiles/.config/wezterm;
-  home.file.".config/zed".source = /home/lafv/dotfiles/.config/zed;
+  home.file.".config/zed".source = /home/lafv/.config/zed;
 
   home.packages = with pkgs; [
     tree
