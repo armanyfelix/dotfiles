@@ -16,6 +16,7 @@
   home.packages = with pkgs; [
     tree
     bat
+    appflowy
     inputs.zed.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
