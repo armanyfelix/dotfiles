@@ -1,29 +1,14 @@
- # Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
-# Home Manager
-# let
-#   home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz;
-# in
 {
   imports =
     [
-    # Include the results of the hardware scan.
       /etc/nixos/hardware-configuration.nix
     ];
-#   home-manager.useUserPackages = true;
-#   home-manager.useGlobalPkgs = true;
-#   home-manager.backupFileExtension = "backup";
-#   home-manager.users.lafv = import ./home.nix;
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   hardware.graphics.enable = true;
@@ -36,11 +21,6 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     prime = {
-      # PRIME Sync and Offload cannot be both enabled
-      # offload = {
-      # enable = true;
-      # enableOffloadCmd = true;
-      # };
       sync.enable = true;
       nvidiaBusId = "PCI:1:0:0";
       amdgpuBusId = "PCI:5:0:0";
@@ -61,31 +41,16 @@
         FastConnectable = true;
       };
       Policy = {
-        # Enable all controllers when they are found. This includes
-        # adapters present on start as well as adapters that are plugged
-        # in later on. Defaults to 'true'.
         AutoEnable = true;
       };
     };
   };
 
-   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
+   networking.hostName = "armanix";
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
   time.timeZone = "America/Tijuana";
-
-  # Select internationalisation properties.
   i18n.defaultLocale = "es_MX.UTF-8";
-
-  # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = false;
 
