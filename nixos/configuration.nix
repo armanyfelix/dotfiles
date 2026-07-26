@@ -5,12 +5,9 @@
     [
       /etc/nixos/hardware-configuration.nix
     ];
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
   boot.kernelPackages = pkgs.linuxPackages_latest;
-
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
@@ -21,6 +18,11 @@
     nvidiaSettings = true;
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     prime = {
+      # PRIME Sync and Offload cannot be both enabled
+      # offload = {
+      # enable = true;
+      # enableOffloadCmd = true;
+      # };
       sync.enable = true;
       nvidiaBusId = "PCI:1:0:0";
       amdgpuBusId = "PCI:5:0:0";
@@ -41,19 +43,21 @@
         FastConnectable = true;
       };
       Policy = {
+        # Enable all controllers when they are found. This includes
+        # adapters present on start as well as adapters that are plugged
+        # in later on. Defaults to 'true'.
         AutoEnable = true;
       };
     };
   };
 
-   networking.hostName = "armanix";
+  networking.hostName = "armanix"; # Define your hostname.
   networking.networkmanager.enable = true;
-
+  services.tuned.enable = true;
+  services.upower.enable = true;
   time.timeZone = "America/Tijuana";
   i18n.defaultLocale = "es_MX.UTF-8";
-  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = false;
-
 # Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true;
   services.displayManager.sddm = {
@@ -71,8 +75,6 @@
 
   console.keyMap = "us";
   services.printing.enable = true;
-
-  # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -80,32 +82,21 @@
     alsa.enable = false;
     alsa.support32Bit = false;
     pulse.enable = true;
-    #jack.enable = true;
   };
-
-  # Flatpak just to install zen
   services.flatpak.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   xdg.portal.config.common.default = "gtk";
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.server.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lafv = {
     isNormalUser = true;
     description = "lafv";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
   };
-
   services.displayManager.autoLogin.enable = true;
   services.displayManager.autoLogin.user = "lafv";
-
+  nixpkgs.config.allowUnfree = true;
   programs.kdeconnect.enable = true;
   programs.firefox.enable = false;
-  nixpkgs.config.allowUnfree = true;
-
   programs.gamescope.enable = true;
   programs.gamemode.enable = true;
   nixpkgs.config.permittedInsecurePackages = [
@@ -113,8 +104,46 @@
   ];
   programs.appimage.enable = true;
   programs.appimage.binfmt = true;
-
-  environment.systemPackages = with pkgs;  import ./packages.nix { inherit pkgs; };
+  environment.systemPackages = with pkgs; [
+  unityhub
+  neovim
+  wget
+  git
+  fastfetch
+  #obs-studio
+  btop
+  cmatrix
+  pay-respects
+  wezterm
+  zoxide
+  vlc
+  signal-desktop
+  xwayland-satellite
+  fuzzel
+  brave
+  obsidian
+#     opencode
+# thunderbird
+  wineWow64Packages.stable
+  wineWow64Packages.waylandFull
+#     appflowy
+#     emacs
+  kdePackages.kate
+  kdePackages.krunner
+  (heroic.override {
+   extraPkgs = pkgs: [
+   pkgs.gamescope
+   ];
+   })
+(yazi.override {
+ _7zz = _7zz-rar;
+ })
+ #libreoffice-qt
+ #hunspell
+ #hunspellDicts.es_MX
+ #hunspellDicts.en_US
+];
+#     import ./packages.nix { inherit pkgs; };
 
 
   fonts = {
@@ -237,7 +266,7 @@ programs.zsh = {
     ff = "fastfetch";
     matrix = "cmatrix";
     f = "pay-respects";
-    nvidia-watch ="watch -n 2 nvidia-smi"; 
+    nvidia-watch ="watch -n 2 nvidia-smi";
   };
 };
 

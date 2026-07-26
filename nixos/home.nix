@@ -9,16 +9,24 @@
   home.file.".p10k.zsh".source = /home/lafv/dotfiles/.p10k.zsh;
   home.file.".config/nvim".source = /home/lafv/dotfiles/.config/nvim;
   home.file.".config/yazi".source = /home/lafv/dotfiles/.config/yazi;
-  home.file.".config/niri".source = /home/lafv/dotfiles/.config/niri;
   home.file.".config/wezterm".source = /home/lafv/dotfiles/.config/wezterm;
-  home.file.".config/zed".source = /home/lafv/.config/zed;
+ # home.file.".config/niri".source = /home/lafv/dotfiles/.config/niri;
+ # home.file.".config/zed".source = /home/lafv/.config/zed;
 
   home.packages = with pkgs; [
     tree
     bat
+    pnpm
+    bun
+    nodejs_24
+ #   python3
     appflowy
-    inputs.zed.packages.${pkgs.stdenv.hostPlatform.system}.default
+    zed-editor
+ #   sweethome3d.application
+    protonplus
+    # inputs.zed.packages.${pkgs.stdenv.hostPlatform.system}.default
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Let home Manager install and manage itself.
