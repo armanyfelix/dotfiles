@@ -51,33 +51,6 @@
     enableBashCompletion = true;
     autosuggestions.enable = true;
     syntaxHighlighting.enable = true;
-    ohMyZsh = {
-      enable = true;
-      custom = "$HOME/.oh-my-zsh/custom/";
-      theme = "powerlevel10k/powerlevel10k";
-      plugins = [
-        "git"
-        "sudo"
-        "extract"
-        "z"
-        "history"
-        "colored-man-pages"
-        "command-not-found"
-        "npm"
-        "node"
-        "rust"
-        "dotenv"
-        "docker"
-        "docker-compose"
-        "vi-mode"
-        "copyfile"
-        "copypath"
-        "dirhistory"
-        "web-search"
-        "urltools"
-        "jsontools"
-      ];
-    };
     shellAliases = {
       np = "nix search nixpkgs --extra-experimental-features";
       nu = "sudo nix-channel --update";

@@ -17,11 +17,6 @@
       };
     };
 
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     codex-cli.url = "github:sadjow/codex-cli-nix";
     zennotes.url = "github:ZenNotes/zennotes";
   };

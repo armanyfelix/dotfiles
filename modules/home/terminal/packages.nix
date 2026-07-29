@@ -7,8 +7,10 @@
     cmatrix
     fastfetch
     pay-respects
+    starship
     tree
     wget
+    wl-clipboard
     zoxide
   ];
 }

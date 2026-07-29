@@ -21,7 +21,6 @@
     };
     firefox.enable = false;
     kdeconnect.enable = true;
-    niri.enable = true;
   };
 
   services.flatpak.enable = true;
@@ -31,12 +30,10 @@
   };
 
   environment.systemPackages = with pkgs; [
-    fuzzel
     kdePackages.kate
     kdePackages.qtstyleplugin-kvantum
     kdePackages.krunner
     unityhub
-    xwayland-satellite
   ];
 
   fonts = {
