@@ -23,6 +23,7 @@
     };
 
     codex-cli.url = "github:sadjow/codex-cli-nix";
+    zennotes.url = "github:ZenNotes/zennotes";
   };
 
   outputs = inputs@{ home-manager, nixpkgs, ... }:

@@ -16,5 +16,6 @@ in
     zed-editor
     inputs.zen-browser.packages.${system}.default
     inputs.noctalia.packages.${system}.default
+    inputs.zennotes.packages.${system}.default
   ];
 }

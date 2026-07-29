@@ -33,3 +33,31 @@ coincidan con `dotfilesDir` definido en `flake.nix`.
 Cada host NixOS mantiene un `hardware-configuration.nix` local dentro de su
 directorio en `hosts/`. El archivo está ignorado por Git. Los comandos usan un
 flake `path:` para incluir este archivo local aunque no forme parte del repositorio.
+
+## Instalación de NixOS
+
+El instalador asume que los discos ya están particionados y que el sistema está
+montado en `/mnt`. Desde el entorno live, clona el repositorio en la ubicación
+que tendrá después de reiniciar:
+
+```sh
+mkdir -p /mnt/home/lafv
+git clone URL_DEL_REPOSITORIO /mnt/home/lafv/Dotfiles
+cd /mnt/home/lafv/Dotfiles
+```
+
+Para generar el hardware, validar e instalar `armanix`:
+
+```sh
+sudo ./scripts/install-nixos.sh --host armanix
+```
+
+Para comprobar todo sin ejecutar `nixos-install`:
+
+```sh
+sudo ./scripts/install-nixos.sh --host armanix --check-only
+```
+
+El script no particiona, formatea ni monta discos. Usa
+`--regenerate-hardware` para volver a detectar el hardware; si el archivo cambia,
+crea un respaldo antes de reemplazarlo.

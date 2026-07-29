@@ -33,6 +33,7 @@
   environment.systemPackages = with pkgs; [
     fuzzel
     kdePackages.kate
+    kdePackages.qtstyleplugin-kvantum
     kdePackages.krunner
     unityhub
     xwayland-satellite

@@ -89,6 +89,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1781074563,
+        "narHash": "sha256-md8WlXOlfnIeHeOScMTTHFyf2d6iaTwPl2apR5EQ3P4=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9ae611a455b90cf061d8f332b977e387bda8e1ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "noctalia": {
       "inputs": {
         "nixpkgs": [
@@ -115,7 +131,8 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
-        "zen-browser": "zen-browser"
+        "zen-browser": "zen-browser",
+        "zennotes": "zennotes"
       }
     },
     "systems": {
@@ -153,6 +170,24 @@
       "original": {
         "owner": "0xc000022070",
         "repo": "zen-browser-flake",
+        "type": "github"
+      }
+    },
+    "zennotes": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1784930092,
+        "narHash": "sha256-D4nuqbAe9gPpUgVZCtgKIskGgprTW0zibn3jTkH0Y00=",
+        "owner": "ZenNotes",
+        "repo": "zennotes",
+        "rev": "a547d5f31a7e6c8fc2e441670091c031bf1aaf98",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ZenNotes",
+        "repo": "zennotes",
         "type": "github"
       }
     }
