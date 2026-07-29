@@ -24,7 +24,7 @@ sudo nixos-rebuild switch --flake path:$PWD#armanix
 En la computadora Fedora:
 
 ```sh
-home-manager switch --flake .#lafv@work-fedora
+home-manager switch --flake .#armanix@work-fedora
 ```
 
 El repositorio debe estar clonado en `~/Dotfiles` para que los enlaces editables
@@ -41,9 +41,9 @@ montado en `/mnt`. Desde el entorno live, clona el repositorio en la ubicación
 que tendrá después de reiniciar:
 
 ```sh
-mkdir -p /mnt/home/lafv
-git clone URL_DEL_REPOSITORIO /mnt/home/lafv/Dotfiles
-cd /mnt/home/lafv/Dotfiles
+mkdir -p /mnt/home/armanix
+git clone URL_DEL_REPOSITORIO /mnt/home/armanix/Dotfiles
+cd /mnt/home/armanix/Dotfiles
 ```
 
 Para generar el hardware, validar e instalar `armanix`:

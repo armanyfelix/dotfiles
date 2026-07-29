@@ -2,8 +2,8 @@
   imports = [ ../../profiles/home/personal.nix ];
 
   home = {
-    username = "lafv";
-    homeDirectory = "/home/lafv";
+    username = "armanix";
+    homeDirectory = "/home/armanix";
     stateVersion = "25.11";
   };
 

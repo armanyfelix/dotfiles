@@ -24,7 +24,7 @@
   outputs = inputs@{ home-manager, nixpkgs, ... }:
     let
       system = "x86_64-linux";
-      username = "lafv";
+      username = "armanix";
       dotfilesDir = "/home/${username}/Dotfiles";
       specialArgs = { inherit inputs dotfilesDir; };
     in

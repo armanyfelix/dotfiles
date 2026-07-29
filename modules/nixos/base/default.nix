@@ -38,9 +38,9 @@
   i18n.defaultLocale = "es_MX.UTF-8";
   console.keyMap = "us";
 
-  users.users.lafv = {
+  users.users.armanix = {
     isNormalUser = true;
-    description = "lafv";
+    description = "master chief";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
   };
@@ -54,7 +54,7 @@
     shellAliases = {
       np = "nix search nixpkgs --extra-experimental-features";
       nu = "sudo nix-channel --update";
-      nrs = "sudo nixos-rebuild switch --flake path:/home/lafv/Dotfiles#armanix";
+      nrs = "sudo nixos-rebuild switch --flake path:/home/armanix/Dotfiles#armanix";
       nix-opt = "sudo nix-collect-garbage --delete-older-than 7d";
       nix-shell-node = "nix-shell -p nodejs pnpm bun";
       ns = "nix-shell -p";

@@ -8,7 +8,7 @@ readonly DEFAULT_REPO_DIR="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 HOST_NAME=""
 TARGET_ROOT="/mnt"
 REPO_DIR="$DEFAULT_REPO_DIR"
-USER_NAME="lafv"
+USER_NAME="armanix"
 ASSUME_YES=false
 CHECK_ONLY=false
 REGENERATE_HARDWARE=false
@@ -23,7 +23,7 @@ Opciones:
   --host HOST             Host declarado en flake.nix (obligatorio).
   --root RUTA             Raíz del sistema montado (por defecto: /mnt).
   --repo RUTA             Ruta del repositorio (por defecto: detectada).
-  --user USUARIO          Usuario propietario de Dotfiles (por defecto: lafv).
+  --user USUARIO          Usuario propietario de Dotfiles (por defecto: armanix).
   --regenerate-hardware   Regenera hardware-configuration.nix aunque exista.
   --check-only            Genera/verifica, pero no ejecuta nixos-install.
   --yes                   Acepta confirmaciones no destructivas.

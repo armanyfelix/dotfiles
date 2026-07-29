@@ -10,7 +10,7 @@
     };
     autoLogin = {
       enable = true;
-      user = "lafv";
+      user = "armanix";
     };
   };
 
