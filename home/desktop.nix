@@ -1,0 +1,12 @@
+{ pkgs, inputs, ... }:
+
+{
+
+  home.packages = with pkgs; [
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.zennotes.packages.${pkgs.stdenv.hostPlatform.system}.default
+    zed-editor
+    appflowy
+    brave
+  ];
+}
