@@ -8,5 +8,7 @@
     zed-editor
     appflowy
     brave
+    anytype
+    signal-desktop
   ];
 }

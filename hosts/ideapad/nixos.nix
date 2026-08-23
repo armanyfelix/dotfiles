@@ -66,6 +66,7 @@
   programs = {
     gamemode.enable = true;
     gamescope.enable = true;
+    nix-ld.enable = true;
     steam = {
       enable = true;
       remotePlay.openFirewall = true;

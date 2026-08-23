@@ -1,6 +1,9 @@
-{ pkgs, inputs, ... }:
+{ pkgs, inputs, config, dotfilesDir, ... }:
 
 {
+  xdg.configFile."nvim".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/nvim";
+
   home.packages = with pkgs; [
     wezterm
     btop
@@ -24,5 +27,9 @@
     claude-code
     codex
     inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default
+    nodejs_26
+    pnpm
+    bun
+    cargo
   ];
 }
