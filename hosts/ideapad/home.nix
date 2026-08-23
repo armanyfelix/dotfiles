@@ -3,6 +3,7 @@
 {
   imports = [
     ../../home/desktop.nix
+    ../../home/kde.nix
     ../../home/terminal.nix
   ];
   home = {
