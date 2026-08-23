@@ -16,7 +16,6 @@
     };
     zennotes.url = "github:ZenNotes/zennotes";
     herdr.url = "github:herdrdev/herdr";
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
   };
 
   outputs = inputs@{ home-manager, nixpkgs, ... }:
@@ -38,7 +37,6 @@
               useUserPackages = true;
               backupFileExtension = "backup";
               extraSpecialArgs = specialArgs;
-              sharedModules = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
               users.${username} = ./hosts/ideapad/home.nix;
             };
           }
