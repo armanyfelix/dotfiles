@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   mkPlasmoid = {
@@ -42,6 +42,11 @@ let
     plasmoidId = "com.github.tilorenz.compact_pager";
     sourceDir = "package";
   };
+
+  waywallenKde = pkgs.fetchurl {
+    url = "https://github.com/waywallen/waywallen-display/releases/download/v0.3.3/waywallen-kde-0.3.3-x86_64-embed.zip";
+    hash = "sha256-0SGuTy/KLSZkts1qb1x3GticUwOI3CQVWyRNhzOuBZ4=";
+  };
 in
 {
   home.packages = with pkgs; [
@@ -51,4 +56,14 @@ in
     runcat
     compactPager
   ];
+
+  home.activation.installWaywallenKde = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if ! $DRY_RUN_CMD ${pkgs.kdePackages.kpackage}/bin/kpackagetool6 \
+      --type Plasma/Wallpaper \
+      --upgrade ${waywallenKde}; then
+      $DRY_RUN_CMD ${pkgs.kdePackages.kpackage}/bin/kpackagetool6 \
+        --type Plasma/Wallpaper \
+        --install ${waywallenKde}
+    fi
+  '';
 }

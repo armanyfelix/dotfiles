@@ -11,4 +11,10 @@
     anytype
     signal-desktop
   ];
+
+  services.flatpak = {
+    enable = true;
+    packages = [ "org.waywallen.waywallen" ];
+    update.auto.enable = true;
+  };
 }
