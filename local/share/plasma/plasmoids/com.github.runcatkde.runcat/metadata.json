@@ -1,0 +1,22 @@
+{
+    "KPackageStructure": "Plasma/Applet",
+    "KPlugin": {
+        "Authors": [
+            {
+                "Email": "lazycat7706@gmail.com",
+                "Name": "fioncat"
+            }
+        ],
+        "BugReportUrl": "https://github.com/fioncat/kde-runcat/issues",
+        "Category": "System Information",
+        "Description": "An animated runner whose speed reflects the current CPU load",
+        "EnabledByDefault": true,
+        "Icon": "/images/runcat.svg",
+        "Id": "com.github.runcatkde.runcat",
+        "License": "Apache",
+        "Name": "RunCat",
+        "Version": "0.4.0",
+        "Website": "https://www.opendesktop.org/p/2366876"
+    },
+    "X-Plasma-API-Minimum-Version": "6.0"
+}

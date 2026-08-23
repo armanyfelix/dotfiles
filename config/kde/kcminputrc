@@ -1,0 +1,26 @@
+[Libinput][1165][51558][ITE Tech. Inc. ITE Device(8176) Keyboard]
+ScrollFactor=0.5
+
+[Libinput][14139][4160][Compx MAD 8K DONGLE]
+PointerAcceleration=-0.400
+ScrollFactor=0.5
+
+[Libinput][14139][4160][Compx MAD 8K DONGLE Consumer Control]
+ScrollFactor=0.5
+
+[Libinput][14139][4160][Compx MAD 8K DONGLE Mouse]
+ScrollFactor=0.5
+
+[Libinput][14139][4190][Shenzhen Yizhita Technology Co., Ltd. ATK68 V2 Keyboard]
+ScrollFactor=5
+
+[Libinput][14139][4190][Shenzhen Yizhita Technology Co., Ltd. ATK68 V2 Mouse]
+ScrollFactor=0.5
+
+[Libinput][1739][52856][MSFT0001:00 06CB:CE78 Mouse]
+PointerAcceleration=-0.200
+ScrollFactor=0.5
+
+[Mouse]
+cursorSize=32
+cursorTheme=Skyrim-by-ru5tyshark-cursors
