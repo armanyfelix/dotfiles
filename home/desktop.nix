@@ -21,6 +21,31 @@ let
       pkgs.vulkan-loader
     ];
   };
+
+  glassyMusicSrc = pkgs.fetchurl {
+    url = "https://github.com/NanKillBro/glassy-music-nankill/releases/download/v3.12.10-beta/Glassy-Music-3.12.10-beta.AppImage";
+    hash = "sha256-9JZicfK8ofcA9w7G+9UgULdhVABZ0UezIp/1M7e3cXU=";
+  };
+
+  glassyMusicContents = pkgs.appimageTools.extractType2 {
+    pname = "glassy-music";
+    version = "3.12.10-beta";
+    src = glassyMusicSrc;
+  };
+
+  glassyMusic = pkgs.appimageTools.wrapType2 {
+    pname = "glassy-music";
+    version = "3.12.10-beta";
+    src = glassyMusicSrc;
+    extraPkgs = pkgs: [
+      pkgs.libglvnd
+      pkgs.libnotify
+      pkgs.nss
+      pkgs.alsa-lib
+      pkgs.at-spi2-atk
+      pkgs.gtk3
+    ];
+  };
 in
 {
 
@@ -33,6 +58,7 @@ in
     anytype
     signal-desktop
     waywallen
+    glassyMusic
   ];
 
   xdg.desktopEntries.waywallen = {
@@ -43,6 +69,18 @@ in
     terminal = false;
     categories = [ "Utility" "Settings" ];
   };
+
+  xdg.desktopEntries.glassy-music = {
+    name = "Glassy Music";
+    comment = "Music player";
+    exec = "glassy-music";
+    icon = "glassy-music-nankill-mod";
+    terminal = false;
+    categories = [ "AudioVideo" "Audio" "Player" ];
+  };
+
+  xdg.dataFile."icons/hicolor/512x512/apps/glassy-music-nankill-mod.png".source =
+    "${glassyMusicContents}/usr/share/icons/hicolor/512x512/apps/glassy-music-nankill-mod.png";
 
   xdg.dataFile."icons/hicolor/scalable/apps/org.waywallen.waywallen.svg".source =
     "${waywallenContents}/usr/share/icons/hicolor/scalable/apps/org.waywallen.waywallen.svg";
