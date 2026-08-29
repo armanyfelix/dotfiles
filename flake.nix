@@ -11,7 +11,6 @@
       url = "github:youwen5/zen-browser-flake";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
       };
     };
     zennotes.url = "github:ZenNotes/zennotes";
@@ -26,10 +25,10 @@
       specialArgs = { inherit inputs dotfilesDir; };
     in
     {
-      nixosConfigurations.ideapad = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.armanix = nixpkgs.lib.nixosSystem {
         inherit system specialArgs;
         modules = [
-          ./hosts/ideapad/nixos.nix
+          ./hosts/armanix/nixos.nix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -37,7 +36,7 @@
               useUserPackages = true;
               backupFileExtension = "backup";
               extraSpecialArgs = specialArgs;
-              users.${username} = ./hosts/ideapad/home.nix;
+              users.${username} = ./hosts/armanix/home.nix;
             };
           }
         ];

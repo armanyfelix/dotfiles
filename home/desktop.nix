@@ -61,6 +61,8 @@ in
     glassyMusic
   ];
 
+  services.kdeconnect.enable = true;
+
   xdg.desktopEntries.waywallen = {
     name = "Waywallen";
     comment = "Dynamic wallpaper manager";

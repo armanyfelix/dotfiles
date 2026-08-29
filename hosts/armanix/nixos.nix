@@ -4,17 +4,30 @@
   imports =
     [
       ./hardware-configuration.nix
+      ../../system/gaming.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos";
+  networking.hostName = "armanix";
   networking.networkmanager.enable = true;
   time.timeZone = "America/Tijuana";
   i18n.defaultLocale = "es_MX.UTF-8";
   security.rtkit.enable = true;
   console.keyMap = "us";
+
+  users.users."armanix" = {
+    isNormalUser = true;
+    description = "armanix";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      kdePackages.kate
+      kdePackages.qtstyleplugin-kvantum
+      unityhub
+      thunderbird
+    ];
+  };
 
   services = {
     openssh.enable = true;
@@ -44,43 +57,11 @@
   };
 
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  xdg.portal.config.common.deafult = "gtk";
-
-  users.users."armanix" = {
-    isNormalUser = true;
-    description = "armanix";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-      kdePackages.qtstyleplugin-kvantum
-      unityhub
-      thunderbird
-    ];
-  };
+  xdg.portal.config.common.default = "gtk";
 
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "electron-36.9.5"
-  ];
-
-  programs = {
-    gamemode.enable = true;
-    gamescope.enable = true;
-    nix-ld.enable = true;
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-    };
-    kdeconnect.enable = true;
-  };
-
-  environment.systemPackages = with pkgs; [
-    (heroic.override {
-      extraPkgs = gamePkgs: [ gamePkgs.gamescope ];
-    })
-    wineWow64Packages.stable
-    wineWow64Packages.waylandFull
   ];
 
   hardware.graphics.enable = true;
