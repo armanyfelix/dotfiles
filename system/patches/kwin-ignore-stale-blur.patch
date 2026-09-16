@@ -1,0 +1,14 @@
+diff --git a/src/wayland/backgroundeffect_v1.cpp b/src/wayland/backgroundeffect_v1.cpp
+--- a/src/wayland/backgroundeffect_v1.cpp
++++ b/src/wayland/backgroundeffect_v1.cpp
+@@ -114,5 +114,8 @@
+-void ExtBackgroundEffectSurfaceV1::ext_background_effect_surface_v1_set_blur_region(Resource *resource, wl_resource *region)
++void ExtBackgroundEffectSurfaceV1::ext_background_effect_surface_v1_set_blur_region(Resource *, wl_resource *region)
+ {
+     if (!m_surface) {
+-        wl_resource_post_error(resource->handle, error_surface_destroyed, "tried to set blur region on destroyed surface");
++        // Local workaround for KDE bug 522547: a stale cosmetic request must
++        // not disconnect the entire client. Keep the null-surface guard and
++        // leave valid surfaces unchanged. Remove when the client lifetime bug
++        // is fixed upstream; this intentionally relaxes the protocol error.
+         return;

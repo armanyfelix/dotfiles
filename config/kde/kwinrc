@@ -2,8 +2,71 @@
 Id_1=a19244fa-363c-4a76-a0c7-fe948376fe93
 Id_2=9b4ab1dd-1ad1-4777-a6a4-757dcf9cac2b
 Id_3=76495b85-ea3d-4405-9c73-d2e5157fd40a
-Number=3
+Id_4=3da2b388-09ee-4509-b691-34d3d3d36685
+Id_5=f067d016-64cd-4129-91a4-e95361dc8fa5
+Id_6=945e4083-99aa-4fdd-962d-c1f1574c19ad
+Number=6
 Rows=1
+
+[Effect-kwin4_effect_geometry_change]
+Duration=450
+
+[NightColor]
+Active=true
+NightTemperature=3200
+
+[Plugins]
+kinetic_maximizeEnabled=false
+krohnkiteEnabled=true
+kwin4_effect_geometry_changeEnabled=true
+sheetEnabled=true
+touchpointsEnabled=true
+translucencyEnabled=true
+wobblywindowsEnabled=true
+
+[Round-Corners]
+ActiveOutlinePalette=0
+ActiveOutlineUseCustom=false
+ActiveOutlineUsePalette=true
+ActiveShadowAlpha=65
+ActiveShadowPalette=0
+DisableOutlineMaximize=false
+DisableOutlineTile=false
+DisableRoundMaximize=false
+DisableRoundTile=false
+InactiveOutlineThickness=0.75
+InactiveSecondOutlineThickness=0.75
+OutlineThickness=0.75
+SecondOutlineThickness=0.75
+ShadowSize=41
+
+[Script-klear]
+excludedWindows=zen, wezterm, kate, steam
+userSetOpacity=61
+
+[Script-krohnkite]
+ignoreClass=krunner,yakuake,spectacle,kded5,xwaylandvideobridge,plasmashell,ksplashqml,org.kde.plasmashell,org.kde.polkit-kde-authentication-agent-1,org.kde.kruler,kruler,kwin_wayland,ksmserver-logout-greeter,
+ignoreRole=quake, Picture-in-Picture
+ignoreTitle=Picture-in-Picture
+keepTilingOnDrag=false
+monocleMaximize=false
+screenGapBetween=6
+screenGapBottom=6
+screenGapLeft=6
+screenGapRight=6
+screenGapTop=6
+
+[Tiling][1403d4a5-5d59-4df0-8e50-06ef5da1116e][7ab6b00d-0bf5-4312-b042-fc902b3ea7d5]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][3da2b388-09ee-4509-b691-34d3d3d36685][67800406-3b6e-46ad-a8b4-3cc19fcb2d42]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][3da2b388-09ee-4509-b691-34d3d3d36685][7ab6b00d-0bf5-4312-b042-fc902b3ea7d5]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][76495b85-ea3d-4405-9c73-d2e5157fd40a][67800406-3b6e-46ad-a8b4-3cc19fcb2d42]
 padding=4
@@ -13,9 +76,17 @@ tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"wi
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
-[Tiling][9b4ab1dd-1ad1-4777-a6a4-757dcf9cac2b][67800406-3b6e-46ad-a8b4-3cc19fcb2d42]
+[Tiling][945e4083-99aa-4fdd-962d-c1f1574c19ad][67800406-3b6e-46ad-a8b4-3cc19fcb2d42]
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][945e4083-99aa-4fdd-962d-c1f1574c19ad][7ab6b00d-0bf5-4312-b042-fc902b3ea7d5]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][9b4ab1dd-1ad1-4777-a6a4-757dcf9cac2b][67800406-3b6e-46ad-a8b4-3cc19fcb2d42]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.3703125},{"width":0.3098958333333333},{"width":0.3197916666666667}]}
 
 [Tiling][9b4ab1dd-1ad1-4777-a6a4-757dcf9cac2b][7ab6b00d-0bf5-4312-b042-fc902b3ea7d5]
 padding=4
@@ -26,6 +97,14 @@ padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 
 [Tiling][a19244fa-363c-4a76-a0c7-fe948376fe93][7ab6b00d-0bf5-4312-b042-fc902b3ea7d5]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][f067d016-64cd-4129-91a4-e95361dc8fa5][67800406-3b6e-46ad-a8b4-3cc19fcb2d42]
+padding=4
+tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
+
+[Tiling][f067d016-64cd-4129-91a4-e95361dc8fa5][7ab6b00d-0bf5-4312-b042-fc902b3ea7d5]
 padding=4
 tiles={"layoutDirection":"horizontal","tiles":[{"width":0.25},{"width":0.5},{"width":0.25}]}
 

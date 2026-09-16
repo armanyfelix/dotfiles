@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# herdr-split-pane <left|down|up|right>
+#
+# Herdr sólo sabe partir un panel hacia "right" y "down". Para izquierda y
+# arriba partimos hacia el lado espejo y después intercambiamos el panel nuevo
+# con su vecino: queda del lado que pediste y con el foco ya puesto en él.
+set -euo pipefail
+
+self=${0##*/}
+
+# El servidor de Herdr lanza estos scripts en segundo plano, sin el PATH de una
+# sesión interactiva. Reponemos las rutas de NixOS y las de una distro normal
+# para que `herdr` y `jq` existan en las dos máquinas.
+PATH="$HOME/.local/bin:$HOME/.nix-profile/bin:/etc/profiles/per-user/${USER:-$(id -un)}/bin:/run/current-system/sw/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+export PATH
+
+die() { printf '%s: %s\n' "$self" "$1" >&2; exit 1; }
+
+command -v herdr >/dev/null 2>&1 || die 'no encuentro el binario herdr en el PATH'
+command -v jq    >/dev/null 2>&1 || die 'este script necesita jq'
+
+# A los comandos de tecla Herdr les exporta HERDR_ACTIVE_PANE_ID; dentro de un
+# panel interactivo la variable se llama HERDR_PANE_ID. Sin ninguna de las dos,
+# Herdr resuelve solo el panel con foco. Nunca usamos --current: esa bandera
+# exige HERDR_PANE_ID y falla justo cuando la llamada viene de una tecla.
+origin=${HERDR_ACTIVE_PANE_ID:-${HERDR_PANE_ID:-}}
+pane=()
+[ -n "$origin" ] && pane=(--pane "$origin")
+
+direction=${1:-}
+
+case $direction in
+  right | down)
+    # Direcciones nativas: una sola llamada.
+    herdr pane split ${pane[@]+"${pane[@]}"} --direction "$direction" --focus >/dev/null
+    ;;
+  left | up)
+    [ "$direction" = left ] && mirror=right || mirror=down
+
+    new=$(herdr pane split ${pane[@]+"${pane[@]}"} --direction "$mirror" --focus |
+      jq -r '.result.pane.pane_id // empty')
+    [ -n "$new" ] || die "no pude crear el panel hacia $direction"
+
+    # El swap se lleva el foco con el panel, así que terminamos dentro del nuevo.
+    herdr pane swap --pane "$new" --direction "$direction" >/dev/null
+    ;;
+  *)
+    die "uso: $self <left|down|up|right>"
+    ;;
+esac

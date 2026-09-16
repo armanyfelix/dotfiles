@@ -15,6 +15,14 @@
     };
     zennotes.url = "github:ZenNotes/zennotes";
     herdr.url = "github:herdrdev/herdr";
+    codex-cli-nix = {
+      url = "github:sadjow/codex-cli-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    claude-code-nix = {
+      url = "github:sadjow/claude-code-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ home-manager, nixpkgs, ... }:
@@ -34,7 +42,6 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              backupFileExtension = "backup";
               extraSpecialArgs = specialArgs;
               users.${username} = ./hosts/armanix/home.nix;
             };

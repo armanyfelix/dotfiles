@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, dotfilesDir, ... }:
 
 {
   imports =
     [
       ./hardware-configuration.nix
       ../../system/gaming.nix
+      ../../system/plasma.nix
     ];
 
   boot.loader.systemd-boot.enable = true;
@@ -116,6 +117,8 @@
     enableDefaultPackages = true;
   };
 
+  programs.kdeconnect.enable = true;
+
   programs.zsh = {
     enable = true;
     enableBashCompletion = true;
@@ -125,8 +128,8 @@
     shellAliases = {
       # NixOS
       np = "nix search nixpkgs --extra-experimental-features";
-      nu = "sudo nix-channel --update";
-      nrs = "sudo nixos-rebuild switch";
+      nu = "nix flake update --flake ${dotfilesDir}";
+      nrs = "sudo nixos-rebuild boot --flake ${dotfilesDir}#armanix";
       nix-opt = "sudo nix-collect-garbage --delete-older-than 7d";
       nix-shell-node = "nix-shell -p nodejs pnpm bun";
       ns = "nix-shell -p";

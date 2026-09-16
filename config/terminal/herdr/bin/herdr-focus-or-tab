@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# herdr-focus-or-tab <left|down|up|right>
+#
+# Mueve el foco al panel vecino. Si ya estás en el borde del layout, salta a la
+# pestaña anterior/siguiente del mismo workspace y entra por el lado contrario,
+# de modo que una sola tecla recorre toda la sesión sin cambiar de acorde.
+set -euo pipefail
+
+self=${0##*/}
+
+PATH="$HOME/.local/bin:$HOME/.nix-profile/bin:/etc/profiles/per-user/${USER:-$(id -un)}/bin:/run/current-system/sw/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+export PATH
+
+die() { printf '%s: %s\n' "$self" "$1" >&2; exit 1; }
+
+command -v herdr >/dev/null 2>&1 || die 'no encuentro el binario herdr en el PATH'
+command -v jq    >/dev/null 2>&1 || die 'este script necesita jq'
+
+# Ver la nota de herdr-split-pane: --current exige HERDR_PANE_ID, que Herdr no
+# exporta a los comandos de tecla; ahí la variable es HERDR_ACTIVE_PANE_ID.
+origin=${HERDR_ACTIVE_PANE_ID:-${HERDR_PANE_ID:-}}
+pane=()
+[ -n "$origin" ] && pane=(--pane "$origin")
+
+direction=${1:-}
+case $direction in
+  left)  step=-1; opposite=right ;;
+  right) step=1;  opposite=left  ;;
+  up)    step=-1; opposite=down  ;;
+  down)  step=1;  opposite=up    ;;
+  *)     die "uso: $self <left|down|up|right>" ;;
+esac
+
+# Primer intento: el vecino dentro de la misma pestaña.
+moved=$(herdr pane focus ${pane[@]+"${pane[@]}"} --direction "$direction" |
+  jq -r '.result.focus.changed // false')
+[ "$moved" = true ] && exit 0
+
+# Estamos en el borde. Buscamos la pestaña vecina del workspace actual.
+current=$(herdr pane current ${pane[@]+"${pane[@]}"})
+workspace=$(printf '%s' "$current" | jq -r '.result.pane.workspace_id')
+tab=$(printf '%s' "$current" | jq -r '.result.pane.tab_id')
+
+target=$(herdr tab list | jq -r \
+  --arg ws "$workspace" --arg tab "$tab" --argjson step "$step" '
+    [ .result.tabs[] | select(.workspace_id == $ws) | .tab_id ] as $tabs
+    | ($tabs | length) as $n
+    | ($tabs | index($tab)) as $i
+    | if $i == null or $n < 2 then empty
+      else $tabs[ ($i + $step + $n) % $n ]
+      end')
+
+# Una sola pestaña: no hay a dónde ir, la tecla simplemente no hace nada.
+[ -n "$target" ] || exit 0
+
+herdr tab focus "$target" >/dev/null
+
+# Entramos por el borde opuesto para que el recorrido se sienta continuo:
+# viniendo por la izquierda aterrizamos en el panel más a la derecha. Aquí ya no
+# fijamos el panel de origen: queremos el que acaba de recibir el foco.
+for _ in $(seq 1 32); do
+  moved=$(herdr pane focus --direction "$opposite" |
+    jq -r '.result.focus.changed // false')
+  [ "$moved" = true ] || break
+done

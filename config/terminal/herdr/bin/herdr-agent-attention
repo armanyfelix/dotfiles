@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# herdr-agent-attention
+#
+# Salta al agente que te está esperando, sin importar en qué workspace viva:
+# primero los "blocked" (piden permiso o hicieron una pregunta), luego los
+# "done" (terminaron mientras mirabas otra cosa). Dentro de cada grupo gana el
+# que lleva más tiempo esperando.
+set -euo pipefail
+
+self=${0##*/}
+
+PATH="$HOME/.local/bin:$HOME/.nix-profile/bin:/etc/profiles/per-user/${USER:-$(id -un)}/bin:/run/current-system/sw/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+export PATH
+
+die() { printf '%s: %s\n' "$self" "$1" >&2; exit 1; }
+
+command -v herdr >/dev/null 2>&1 || die 'no encuentro el binario herdr en el PATH'
+command -v jq    >/dev/null 2>&1 || die 'este script necesita jq'
+
+target=$(herdr agent list | jq -r '
+  [ .result.agents[] | select(.focused | not) ] as $agents
+  | ( [ $agents[] | select(.agent_status == "blocked") ] | sort_by(.state_change_seq) )
+  + ( [ $agents[] | select(.agent_status == "done")    ] | sort_by(.state_change_seq) )
+  | first
+  | .pane_id // empty')
+
+if [ -z "$target" ]; then
+  # Nada pendiente: avisamos en vez de movernos a ciegas.
+  herdr notification show 'Nadie te espera' \
+    --body 'Ningún agente está bloqueado ni acaba de terminar.' \
+    --sound none >/dev/null 2>&1 || true
+  exit 0
+fi
+
+herdr agent focus "$target" >/dev/null

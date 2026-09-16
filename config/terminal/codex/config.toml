@@ -1,0 +1,36 @@
+model_reasoning_effort = "medium"
+service_tier = "default"
+model = "gpt-5.6-luna"
+
+[projects."/home/armanix/Dotfiles"]
+trust_level = "trusted"
+
+[projects."/home/armanix/Repos/zag"]
+trust_level = "trusted"
+
+[projects."/home/armanix/Repos"]
+trust_level = "trusted"
+
+[projects."/home/armanix/Repos/toyz"]
+trust_level = "trusted"
+
+[projects."/home/armanix/Repos/portfolio"]
+trust_level = "trusted"
+
+[features]
+hooks = true
+
+[hooks.state]
+
+[hooks.state."/home/armanix/.codex/hooks.json:session_start:0:0"]
+trusted_hash = "sha256:a58b0597e2bf83a31dc51ffb84eb6536a89248ef500de42aa75c388db5b1d6bf"
+
+[mcp_servers.context7]
+command = "pnpm"
+args = ["dlx", "@upstash/context7-mcp"]
+
+[tui]
+theme = "one-half-dark"
+
+[tui.model_availability_nux]
+gpt-6-astra = 4

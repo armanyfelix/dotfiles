@@ -2,23 +2,25 @@
 ScrollFactor=0.5
 
 [Libinput][14139][4160][Compx MAD 8K DONGLE]
-PointerAcceleration=-0.400
-ScrollFactor=0.5
+PointerAcceleration=-1.000
+ScrollFactor=0.3
 
 [Libinput][14139][4160][Compx MAD 8K DONGLE Consumer Control]
-ScrollFactor=0.5
+ScrollFactor=0.3
 
 [Libinput][14139][4160][Compx MAD 8K DONGLE Mouse]
+PointerAcceleration=-0.600
 ScrollFactor=0.5
 
 [Libinput][14139][4190][Shenzhen Yizhita Technology Co., Ltd. ATK68 V2 Keyboard]
 ScrollFactor=5
 
 [Libinput][14139][4190][Shenzhen Yizhita Technology Co., Ltd. ATK68 V2 Mouse]
+PointerAcceleration=-0.600
 ScrollFactor=0.5
 
 [Libinput][1739][52856][MSFT0001:00 06CB:CE78 Mouse]
-PointerAcceleration=-0.200
+PointerAcceleration=-0.600
 ScrollFactor=0.5
 
 [Mouse]
