@@ -10,17 +10,29 @@ ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desk
 [Favorites-org.kde.plasma.kicker.favorites.instance-112-global]
 ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop
 
+[Favorites-org.kde.plasma.kicker.favorites.instance-151-21f3e576-f638-46da-a032-f03f39aff80a]
+ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop,applications:glassy-music.desktop
+
+[Favorites-org.kde.plasma.kicker.favorites.instance-151-global]
+ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop,applications:glassy-music.desktop
+
 [Favorites-org.kde.plasma.kicker.favorites.instance-77-21f3e576-f638-46da-a032-f03f39aff80a]
-ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop
+ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop,applications:glassy-music.desktop
 
 [Favorites-org.kde.plasma.kicker.favorites.instance-77-global]
-ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop
+ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop,applications:glassy-music.desktop
 
 [Favorites-org.kde.plasma.kicker.favorites.instance-90-21f3e576-f638-46da-a032-f03f39aff80a]
 ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop
 
 [Favorites-org.kde.plasma.kicker.favorites.instance-90-global]
 ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop
+
+[Favorites-org.kde.plasma.kickoff.favorites.instance-145-21f3e576-f638-46da-a032-f03f39aff80a]
+ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop,applications:glassy-music.desktop
+
+[Favorites-org.kde.plasma.kickoff.favorites.instance-145-global]
+ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop,applications:glassy-music.desktop
 
 [Favorites-org.kde.plasma.kickoff.favorites.instance-4-21f3e576-f638-46da-a032-f03f39aff80a]
 ordering=preferred://browser,org.kde.kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.discover.desktop
@@ -29,7 +41,7 @@ ordering=preferred://browser,org.kde.kontact.desktop,systemsettings.desktop,org.
 ordering=preferred://browser,org.kde.kontact.desktop,systemsettings.desktop,org.kde.dolphin.desktop,org.kde.discover.desktop
 
 [Favorites-org.kde.plasma.kickoff.favorites.instance-52-21f3e576-f638-46da-a032-f03f39aff80a]
-ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop
+ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop,applications:glassy-music.desktop
 
 [Favorites-org.kde.plasma.kickoff.favorites.instance-52-global]
-ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop
+ordering=applications:org.kde.discover.desktop,applications:org.kde.dolphin.desktop,applications:systemsettings.desktop,preferred://browser,applications:anytype.desktop,applications:glassy-music.desktop
