@@ -17,6 +17,9 @@ trust_level = "trusted"
 [projects."/home/armanix/Repos/portfolio"]
 trust_level = "trusted"
 
+[projects."/home/armanix"]
+trust_level = "trusted"
+
 [features]
 hooks = true
 

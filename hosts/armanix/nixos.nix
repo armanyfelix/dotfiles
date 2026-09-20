@@ -79,6 +79,24 @@
       amdgpuBusId = "PCI:5:0:0";
     };
   };
+  # Swap comprimido en RAM + OOM killer que actúe antes de que el sistema se congele.
+  zramSwap = {
+    enable = true;
+    algorithm = "zstd";
+    memoryPercent = 50;
+  };
+  systemd.oomd = {
+    enable = true;
+    enableRootSlice = true;
+    enableUserSlices = true;
+    enableSystemSlice = true;
+    extraConfig.DefaultMemoryPressureDurationSec = "10s";
+  };
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 180;
+    "vm.page-cluster" = 0;
+  };
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;

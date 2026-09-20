@@ -146,7 +146,7 @@ globalSettings={"panel":{"normal":{"enabled":true,"blurBehind":true,"backgroundC
 hiddenWidgets={"widgets":[{"name":"luisbocanegra.panel.colorizer","id":107,"hide":true}]}
 hideWidget=true
 lastPreset=/home/armanix/.local/share/plasma/plasmoids/luisbocanegra.panel.colorizer/contents/ui/presets/Dock
-panelWidgets=[{"id":120,"name":"org.kde.plasma.systemtray","title":"Bandeja del sistema","icon":"preferences-desktop-notification","inTray":false},{"id":139,"name":"luisbocanegra.panel.colorizer","title":"Panel Colorizer","icon":"desktop","inTray":false},{"id":140,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":137,"name":"org.kde.plasma.digitalclock","title":"Reloj digital","icon":"preferences-system-time","inTray":false},{"id":119,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":-1,"name":"org.kde.plasma.notifications","title":"Notificaciones","icon":"notification-active-symbolic","inTray":true},{"id":-1,"name":"waywallen","title":"waywallen","icon":"org.waywallen.waywallen-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.clipboard","title":"Portapapeles","icon":"klipper-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.brightness","title":"Brillo y color","icon":"redshift-status-off-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.battery","title":"Energía y batería","icon":"battery-full-symbolic","inTray":true},{"id":-1,"name":"org.kde.kdeconnect","title":"KDE Connect","icon":"kdeconnect-tray-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.networkmanagement","title":"Redes","icon":"network-wireless-80-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.volume","title":"Volumen del sonido","icon":"audio-volume-medium-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.systemtray.expand","title":"Mostrar los iconos ocultos","icon":"arrow-down","inTray":true}]
+panelWidgets=[{"id":120,"name":"org.kde.plasma.systemtray","title":"Bandeja del sistema","icon":"preferences-desktop-notification","inTray":false},{"id":139,"name":"luisbocanegra.panel.colorizer","title":"Panel Colorizer","icon":"desktop","inTray":false},{"id":140,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":137,"name":"org.kde.plasma.digitalclock","title":"Reloj digital","icon":"preferences-system-time","inTray":false},{"id":119,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":-1,"name":"waywallen","title":"waywallen","icon":"org.waywallen.waywallen-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.clipboard","title":"Portapapeles","icon":"klipper-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.brightness","title":"Brillo y color","icon":"brightness-high-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.battery","title":"Energía y batería","icon":"battery-full-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.networkmanagement","title":"Redes","icon":"network-wireless-80-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.volume","title":"Volumen del sonido","icon":"audio-volume-muted-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.systemtray.expand","title":"Mostrar los iconos ocultos","icon":"arrow-down","inTray":true}]
 pluginFound=true
 
 [Containments][118][Applets][140]
@@ -233,7 +233,7 @@ immutability=1
 plugin=plasmusic-toolbar
 
 [Containments][144][Applets][146][Configuration]
-popupHeight=446
+popupHeight=166
 popupWidth=282
 
 [Containments][144][Applets][146][Configuration][ConfigDialog]
@@ -367,6 +367,8 @@ pluginFound=true
 AppletOrder=151;152;153;154
 
 [Containments][156]
+ItemGeometries-1920x1080=
+ItemGeometriesHorizontal=
 activityId=bc7aabe1-b99f-4346-b1fc-9030ac25d68e
 formfactor=0
 immutability=1
@@ -376,6 +378,8 @@ plugin=org.kde.plasma.folder
 wallpaperplugin=org.kde.image
 
 [Containments][157]
+ItemGeometries-1600x900=
+ItemGeometriesHorizontal=
 activityId=bc7aabe1-b99f-4346-b1fc-9030ac25d68e
 formfactor=0
 immutability=1
@@ -403,7 +407,7 @@ DialogWidth=1910
 [Containments][50][General]
 changedPositions={"desktop:/NIX SHEET CODE":["1600x900,1920x1080","5","6"],"desktop:/Wallpaper Engine.desktop":["1600x900,1920x1080","1","16"]}
 lastResolution=1920x1080
-positions={"1600x900":["6","14","desktop:/NIX SHEET CODE","5","6","desktop:/Wallpaper Engine.desktop","1","13"],"1920x1080":["6","17","desktop:/NIX SHEET CODE","5","6","desktop:/Wallpaper Engine.desktop","1","16"]}
+positions={"1600x900":["6","14","desktop:/NIX SHEET CODE","5","6","desktop:/Wallpaper Engine.desktop","1","13"],"1920x1080":["6","17","desktop:/Wallpaper Engine.desktop","1","16","desktop:/NIX SHEET CODE","5","6"]}
 sortMode=-1
 
 [Containments][50][Wallpaper][org.kde.image][General]
@@ -441,7 +445,7 @@ globalSettings={"panel":{"normal":{"enabled":true,"blurBehind":true,"backgroundC
 hiddenWidgets={"widgets":[{"name":"luisbocanegra.panel.colorizer","id":107,"hide":true}]}
 hideWidget=true
 lastPreset=/home/armanix/.local/share/plasma/plasmoids/luisbocanegra.panel.colorizer/contents/ui/presets/Dock
-panelWidgets=[{"id":56,"name":"org.kde.plasma.systemtray","title":"Bandeja del sistema","icon":"preferences-desktop-notification","inTray":false},{"id":107,"name":"luisbocanegra.panel.colorizer","title":"Panel Colorizer","icon":"desktop","inTray":false},{"id":115,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":69,"name":"org.kde.plasma.digitalclock","title":"Reloj digital","icon":"preferences-system-time","inTray":false},{"id":55,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":70,"name":"org.kde.plasma.showdesktop","title":"Dar un vistazo al escritorio","icon":"user-desktop-symbolic","inTray":false},{"id":-1,"name":"org.kde.plasma.notifications","title":"Notificaciones","icon":"notification-active-symbolic","inTray":true},{"id":-1,"name":"waywallen","title":"waywallen","icon":"org.waywallen.waywallen-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.clipboard","title":"Portapapeles","icon":"klipper-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.brightness","title":"Brillo y color","icon":"redshift-status-off-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.battery","title":"Energía y batería","icon":"battery-full-symbolic","inTray":true},{"id":-1,"name":"org.kde.kdeconnect","title":"KDE Connect","icon":"kdeconnect-tray-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.networkmanagement","title":"Redes","icon":"network-wireless-80-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.volume","title":"Volumen del sonido","icon":"audio-volume-medium-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.systemtray.expand","title":"Mostrar los iconos ocultos","icon":"arrow-down","inTray":true}]
+panelWidgets=[{"id":56,"name":"org.kde.plasma.systemtray","title":"Bandeja del sistema","icon":"preferences-desktop-notification","inTray":false},{"id":107,"name":"luisbocanegra.panel.colorizer","title":"Panel Colorizer","icon":"desktop","inTray":false},{"id":115,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":69,"name":"org.kde.plasma.digitalclock","title":"Reloj digital","icon":"preferences-system-time","inTray":false},{"id":55,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":70,"name":"org.kde.plasma.showdesktop","title":"Dar un vistazo al escritorio","icon":"user-desktop-symbolic","inTray":false},{"id":-1,"name":"waywallen","title":"waywallen","icon":"org.waywallen.waywallen-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.clipboard","title":"Portapapeles","icon":"klipper-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.brightness","title":"Brillo y color","icon":"brightness-high-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.battery","title":"Energía y batería","icon":"battery-full-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.networkmanagement","title":"Redes","icon":"network-wireless-80-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.volume","title":"Volumen del sonido","icon":"audio-volume-muted-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.systemtray.expand","title":"Mostrar los iconos ocultos","icon":"arrow-down","inTray":true}]
 pluginFound=true
 
 [Containments][51][Applets][115]
@@ -694,7 +698,7 @@ immutability=1
 plugin=plasmusic-toolbar
 
 [Containments][96][Applets][88][Configuration]
-popupHeight=413
+popupHeight=166
 popupWidth=267
 
 [Containments][96][Applets][88][Configuration][ConfigDialog]
