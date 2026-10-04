@@ -12,3 +12,6 @@ Seen=true
 
 [Applications][zen]
 Seen=true
+
+[Notifications]
+PopupPosition=TopRight

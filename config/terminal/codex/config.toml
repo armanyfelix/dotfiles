@@ -1,6 +1,6 @@
 model_reasoning_effort = "medium"
 service_tier = "default"
-model = "gpt-5.6-sol"
+model = "gpt-6.1-sol"
 
 [projects."/home/armanix/Dotfiles"]
 trust_level = "trusted"
@@ -34,6 +34,9 @@ args = ["dlx", "@upstash/context7-mcp"]
 
 [tui]
 theme = "one-half-dark"
+screen_reader_detection_done = true
+pet = "stacky"
 
 [tui.model_availability_nux]
 gpt-6-astra = 4
+"gpt-6.1-sol" = 2

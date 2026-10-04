@@ -59,6 +59,7 @@ in
     signal-desktop
     waywallen
     glassyMusic
+    monero-gui
   ];
 
   xdg.desktopEntries.waywallen = {
