@@ -13,6 +13,7 @@ Duration=450
 
 [NightColor]
 Active=true
+DayTemperature=2400
 NightTemperature=3200
 
 [Plugins]

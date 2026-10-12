@@ -1,6 +1,13 @@
 [Libinput][1165][51558][ITE Tech. Inc. ITE Device(8176) Keyboard]
 ScrollFactor=0.5
 
+[Libinput][14139][4159][compx MAD R]
+PointerAcceleration=-0.600
+ScrollFactor=0.3
+
+[Libinput][14139][4159][compx MAD R Consumer Control]
+ScrollFactor=0.3
+
 [Libinput][14139][4160][Compx MAD 8K DONGLE]
 PointerAcceleration=-1.000
 ScrollFactor=0.3
@@ -13,7 +20,7 @@ PointerAcceleration=-0.600
 ScrollFactor=0.5
 
 [Libinput][14139][4190][Shenzhen Yizhita Technology Co., Ltd. ATK68 V2 Keyboard]
-ScrollFactor=5
+ScrollFactor=1
 
 [Libinput][14139][4190][Shenzhen Yizhita Technology Co., Ltd. ATK68 V2 Mouse]
 PointerAcceleration=-0.600

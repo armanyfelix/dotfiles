@@ -52,6 +52,7 @@
     eza
     # unzip
     neovim
+    gcc # nvim-treesitter compila sus parsers con cc
     inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

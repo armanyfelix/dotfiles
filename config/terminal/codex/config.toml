@@ -32,6 +32,9 @@ trusted_hash = "sha256:a58b0597e2bf83a31dc51ffb84eb6536a89248ef500de42aa75c388db
 command = "pnpm"
 args = ["dlx", "@upstash/context7-mcp"]
 
+[mcp_servers.supabase]
+url = "https://mcp.supabase.com/mcp?project_ref=gyblyidqhkmvmalwdgnz"
+
 [tui]
 theme = "one-half-dark"
 screen_reader_detection_done = true
@@ -39,4 +42,4 @@ pet = "stacky"
 
 [tui.model_availability_nux]
 gpt-6-astra = 4
-"gpt-6.1-sol" = 2
+"gpt-6.1-sol" = 4
