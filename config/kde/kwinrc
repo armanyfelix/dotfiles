@@ -126,4 +126,3 @@ Scale=1.2
 
 [org.kde.kdecoration2]
 ButtonsOnLeft=MSFE
-library=org.kde.kwin.aurorae.v2

@@ -59,11 +59,11 @@ plugin=org.kde.kscreen
 
 [Containments][118][Applets][120][Applets][128]
 immutability=1
-plugin=org.kde.plasma.keyboardindicator
+plugin=org.kde.merkuro.contact.applet
 
 [Containments][118][Applets][120][Applets][129]
 immutability=1
-plugin=org.kde.plasma.keyboardlayout
+plugin=org.kde.plasma.keyboardindicator
 
 [Containments][118][Applets][120][Applets][130]
 immutability=1
@@ -104,8 +104,8 @@ DialogHeight=630
 DialogWidth=810
 
 [Containments][118][Applets][120][General]
-extraItems=org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.notifications,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager,org.kde.plasma.volume,org.kde.plasma.weather,org.kde.kdeconnect,org.kde.plasma.bluetooth
-knownItems=org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager,org.kde.plasma.volume,org.kde.plasma.weather,org.kde.kdeconnect,org.kde.plasma.bluetooth
+extraItems=org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.notifications,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager,org.kde.plasma.volume,org.kde.plasma.weather,org.kde.kdeconnect,org.kde.plasma.bluetooth,org.kde.merkuro.contact.applet
+knownItems=org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager,org.kde.plasma.volume,org.kde.plasma.weather,org.kde.kdeconnect,org.kde.plasma.bluetooth,org.kde.merkuro.contact.applet
 
 [Containments][118][Applets][137]
 immutability=1
@@ -146,7 +146,7 @@ globalSettings={"panel":{"normal":{"enabled":true,"blurBehind":true,"backgroundC
 hiddenWidgets={"widgets":[{"name":"luisbocanegra.panel.colorizer","id":107,"hide":true}]}
 hideWidget=true
 lastPreset=/home/armanix/.local/share/plasma/plasmoids/luisbocanegra.panel.colorizer/contents/ui/presets/Dock
-panelWidgets=[{"id":120,"name":"org.kde.plasma.systemtray","title":"Bandeja del sistema","icon":"preferences-desktop-notification","inTray":false},{"id":139,"name":"luisbocanegra.panel.colorizer","title":"Panel Colorizer","icon":"desktop","inTray":false},{"id":140,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":137,"name":"org.kde.plasma.digitalclock","title":"Reloj digital","icon":"preferences-system-time","inTray":false},{"id":119,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":-1,"name":"org.kde.plasma.notifications","title":"Notificaciones","icon":"notification-active-symbolic","inTray":true},{"id":-1,"name":"Notificador de Discover_org.kde.DiscoverNotifier","title":"Actualizaciones","icon":"update-low-symbolic","inTray":true},{"id":-1,"name":"steam","title":"Steam","icon":"steam_tray_mono-symbolic","inTray":true},{"id":-1,"name":"waywallen","title":"waywallen","icon":"org.waywallen.waywallen-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.clipboard","title":"Portapapeles","icon":"klipper-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.brightness","title":"Brillo y color","icon":"redshift-status-off-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.battery","title":"Energía y batería","icon":"battery-full-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.networkmanagement","title":"Redes","icon":"network-wireless-60-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.volume","title":"Volumen del sonido","icon":"audio-volume-high-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.systemtray.expand","title":"Mostrar los iconos ocultos","icon":"arrow-down","inTray":true}]
+panelWidgets=[{"id":120,"name":"org.kde.plasma.systemtray","title":"Bandeja del sistema","icon":"preferences-desktop-notification","inTray":false},{"id":139,"name":"luisbocanegra.panel.colorizer","title":"Panel Colorizer","icon":"desktop","inTray":false},{"id":140,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":137,"name":"org.kde.plasma.digitalclock","title":"Reloj digital","icon":"preferences-system-time","inTray":false},{"id":119,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":-1,"name":"org.kde.plasma.notifications","title":"Notificaciones","icon":"notification-active-symbolic","inTray":true},{"id":-1,"name":"Notificador de Discover_org.kde.DiscoverNotifier","title":"Actualizaciones","icon":"update-low-symbolic","inTray":true},{"id":-1,"name":"steam","title":"Steam","icon":"steam_tray_mono-symbolic","inTray":true},{"id":-1,"name":"waywallen","title":"waywallen","icon":"org.waywallen.waywallen-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.clipboard","title":"Portapapeles","icon":"klipper-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.brightness","title":"Brillo y color","icon":"redshift-status-off-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.battery","title":"Energía y batería","icon":"battery-full-symbolic","inTray":true},{"id":-1,"name":"org.kde.kdeconnect","title":"KDE Connect","icon":"kdeconnect-tray-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.networkmanagement","title":"Redes","icon":"network-wireless-60-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.volume","title":"Volumen del sonido","icon":"audio-volume-high-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.systemtray.expand","title":"Mostrar los iconos ocultos","icon":"arrow-down","inTray":true}]
 pluginFound=true
 
 [Containments][118][Applets][140]
@@ -401,8 +401,8 @@ DialogWidth=1910
 
 [Containments][50][General]
 changedPositions={"desktop:/NIX SHEET CODE":["1920x1080,1600x900","5","13"],"desktop:/Wallpaper Engine.desktop":["1920x1080,1600x900","1","16"]}
-lastResolution=1920x1080
-positions={"1600x900":["6","14","desktop:/NIX SHEET CODE","5","13","desktop:/Wallpaper Engine.desktop","1","13"],"1920x1080":["1","17","desktop:/NIX SHEET CODE","5","13","desktop:/Wallpaper Engine.desktop","1","16"]}
+lastResolution=1600x900
+positions={"1600x900":["6","14","desktop:/Wallpaper Engine.desktop","1","13","desktop:/NIX SHEET CODE","5","13"],"1920x1080":["1","17","desktop:/NIX SHEET CODE","5","13","desktop:/Wallpaper Engine.desktop","1","16"]}
 sortMode=-1
 
 [Containments][50][Wallpaper][org.kde.image][General]
@@ -440,7 +440,7 @@ globalSettings={"panel":{"normal":{"enabled":true,"blurBehind":true,"backgroundC
 hiddenWidgets={"widgets":[{"name":"luisbocanegra.panel.colorizer","id":107,"hide":true}]}
 hideWidget=true
 lastPreset=/home/armanix/.local/share/plasma/plasmoids/luisbocanegra.panel.colorizer/contents/ui/presets/Dock
-panelWidgets=[{"id":56,"name":"org.kde.plasma.systemtray","title":"Bandeja del sistema","icon":"preferences-desktop-notification","inTray":false},{"id":107,"name":"luisbocanegra.panel.colorizer","title":"Panel Colorizer","icon":"desktop","inTray":false},{"id":115,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":69,"name":"org.kde.plasma.digitalclock","title":"Reloj digital","icon":"preferences-system-time","inTray":false},{"id":55,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":70,"name":"org.kde.plasma.showdesktop","title":"Dar un vistazo al escritorio","icon":"user-desktop-symbolic","inTray":false},{"id":-1,"name":"org.kde.plasma.notifications","title":"Notificaciones","icon":"notification-active-symbolic","inTray":true},{"id":-1,"name":"","title":"","icon":"","inTray":true},{"id":-1,"name":"steam","title":"Steam","icon":"steam_tray_mono-symbolic","inTray":true},{"id":-1,"name":"waywallen","title":"waywallen","icon":"org.waywallen.waywallen-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.clipboard","title":"Portapapeles","icon":"klipper-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.brightness","title":"Brillo y color","icon":"redshift-status-off-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.battery","title":"Energía y batería","icon":"battery-full-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.networkmanagement","title":"Redes","icon":"network-wireless-80-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.volume","title":"Volumen del sonido","icon":"audio-volume-high-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.systemtray.expand","title":"Mostrar los iconos ocultos","icon":"arrow-down","inTray":true}]
+panelWidgets=[{"id":56,"name":"org.kde.plasma.systemtray","title":"Bandeja del sistema","icon":"preferences-desktop-notification","inTray":false},{"id":107,"name":"luisbocanegra.panel.colorizer","title":"Panel Colorizer","icon":"desktop","inTray":false},{"id":115,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":69,"name":"org.kde.plasma.digitalclock","title":"Reloj digital","icon":"preferences-system-time","inTray":false},{"id":55,"name":"org.kde.plasma.marginsseparator","title":"Separador de márgenes","icon":"filename-divider","inTray":false},{"id":70,"name":"org.kde.plasma.showdesktop","title":"Dar un vistazo al escritorio","icon":"user-desktop-symbolic","inTray":false},{"id":-1,"name":"org.kde.plasma.notifications","title":"Notificaciones","icon":"notification-active-symbolic","inTray":true},{"id":-1,"name":"org.kde.merkuro.contact.applet","title":"Contacts","icon":"im-user-symbolic","inTray":true},{"id":-1,"name":"Notificador de Discover_org.kde.DiscoverNotifier","title":"Actualizaciones","icon":"update-low-symbolic","inTray":true},{"id":-1,"name":"waywallen","title":"waywallen","icon":"org.waywallen.waywallen-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.clipboard","title":"Portapapeles","icon":"klipper-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.brightness","title":"Brillo y color","icon":"redshift-status-off-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.battery","title":"Energía y batería","icon":"battery-full-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.networkmanagement","title":"Redes","icon":"network-wireless-80-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.volume","title":"Volumen del sonido","icon":"audio-volume-high-symbolic","inTray":true},{"id":-1,"name":"org.kde.plasma.systemtray.expand","title":"Mostrar los iconos ocultos","icon":"arrow-down","inTray":true}]
 pluginFound=true
 
 [Containments][51][Applets][115]
@@ -458,9 +458,13 @@ immutability=1
 lastScreen=-1
 location=0
 plugin=org.kde.plasma.systemtray
-popupHeight=432
-popupWidth=432
+popupHeight=439
+popupWidth=439
 wallpaperplugin=org.kde.image
+
+[Containments][51][Applets][56][Applets][164]
+immutability=1
+plugin=org.kde.merkuro.contact.applet
 
 [Containments][51][Applets][56][Applets][57]
 immutability=1
@@ -537,8 +541,8 @@ DialogHeight=630
 DialogWidth=810
 
 [Containments][51][Applets][56][General]
-extraItems=org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.notifications,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager,org.kde.plasma.volume,org.kde.plasma.weather,org.kde.kdeconnect,org.kde.plasma.bluetooth
-knownItems=org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager,org.kde.plasma.volume,org.kde.plasma.weather,org.kde.kdeconnect,org.kde.plasma.bluetooth
+extraItems=org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.notifications,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager,org.kde.plasma.volume,org.kde.plasma.weather,org.kde.kdeconnect,org.kde.plasma.bluetooth,org.kde.merkuro.contact.applet
+knownItems=org.kde.plasma.cameraindicator,org.kde.plasma.clipboard,org.kde.plasma.devicenotifier,org.kde.plasma.manage-inputmethod,org.kde.plasma.mediacontroller,org.kde.plasma.notifications,org.kde.kscreen,org.kde.plasma.battery,org.kde.plasma.brightness,org.kde.plasma.keyboardindicator,org.kde.plasma.keyboardlayout,org.kde.plasma.networkmanagement,org.kde.plasma.printmanager,org.kde.plasma.volume,org.kde.plasma.weather,org.kde.kdeconnect,org.kde.plasma.bluetooth,org.kde.merkuro.contact.applet
 
 [Containments][51][Applets][69]
 immutability=1

@@ -4,7 +4,6 @@
   imports = [
     ../../home/desktop.nix
     ../../home/development.nix
-    ../../home/paperclip.nix
     ../../home/kde.nix
     ../../home/terminal.nix
   ];

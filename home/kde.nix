@@ -23,54 +23,18 @@ let
     "Kvantum/kvantum.kvconfig"
   ];
 
-  mkPlasmoid = {
-    pname,
-    version,
-    owner,
-    repo,
-    rev,
-    hash,
-    plasmoidId,
-    sourceDir ? ".",
-  }:
-    pkgs.stdenvNoCC.mkDerivation {
-      inherit pname version;
-      src = pkgs.fetchFromGitHub { inherit owner repo rev hash; };
-      dontBuild = true;
-
-      installPhase = ''
-        mkdir -p "$out/share/plasma/plasmoids/${plasmoidId}"
-        cp -r ${sourceDir}/. "$out/share/plasma/plasmoids/${plasmoidId}"
-      '';
+  waywallen = pkgs.appimageTools.wrapType2 rec {
+    pname = "waywallen";
+    version = "0.4.4";
+    src = pkgs.fetchurl {
+      url = "https://github.com/waywallen/waywallen/releases/download/v${version}/waywallen-${version}-x86_64.AppImage";
+      hash = "sha256-P1KWhxhGYFNUiYcRs8ARN/dUsFg5vWJNaacxYfuch8U=";
     };
-
-  runcat = mkPlasmoid {
-    pname = "kde-runcat";
-    version = "0.4.0";
-    owner = "fioncat";
-    repo = "kde-runcat";
-    rev = "ea4e0cc1ce47e69908b0501d0f9fae66309adb91";
-    hash = "sha256-bbBWMDc/pzJQ2Ee0yMYo1waxKrER0Axe+3hiHo83iRA=";
-    plasmoidId = "com.github.runcatkde.runcat";
-  };
-
-  waywallenKde = pkgs.fetchurl {
-    url = "https://github.com/waywallen/waywallen-display/releases/download/v0.3.3/waywallen-kde-0.3.3-x86_64-embed.zip";
-    hash = "sha256-0SGuTy/KLSZkts1qb1x3GticUwOI3CQVWyRNhzOuBZ4=";
-  };
-
-  waywallenWallpaper = pkgs.stdenvNoCC.mkDerivation {
-    pname = "waywallen-kde";
-    version = "0.3.3";
-    src = waywallenKde;
-    nativeBuildInputs = [ pkgs.unzip ];
-    sourceRoot = "org.waywallen.kde";
-    dontBuild = true;
-    # Preserve the upstream embedded plugin exactly as previously installed.
-    dontFixup = true;
-    installPhase = ''
-      mkdir -p "$out/share/plasma/wallpapers/org.waywallen.kde"
-      cp -r . "$out/share/plasma/wallpapers/org.waywallen.kde/"
+    extraInstallCommands = let
+      contents = pkgs.appimageTools.extract { inherit pname version src; };
+    in ''
+      mkdir -p "$out/share"
+      cp -r ${contents}/usr/share/{applications,icons} "$out/share/"
     '';
   };
 in
@@ -79,6 +43,13 @@ in
     source = config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/config/kde/${name}";
   }) // {
     "Kvantum/Utterly-Nord".source = "${pkgs.utterly-nord-plasma}/share/Kvantum/Utterly-Nord";
+    # Replace the old desktop autostart; systemd orders startup after Plasma.
+    "autostart/waywallen.desktop".text = ''
+      [Desktop Entry]
+      Type=Application
+      Name=Waywallen
+      Hidden=true
+    '';
   };
 
   home.activation.checkPlasmaConfig = lib.hm.dag.entryBefore [ "writeBoundary" ] ''
@@ -97,11 +68,49 @@ in
     fi
   '';
 
+  home.activation.waywallenDefaultSource = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    run ${pkgs.kdePackages.kconfig}/bin/kwriteconfig6 --file "${config.xdg.configHome}/waywallen/waywallen.conf" \
+      --group DiscoverView --key selectedSourceId wallpaper_engine
+  '';
+
+  systemd.user.services.waywallen = {
+    Unit = {
+      Description = "Waywallen wallpaper daemon";
+      Requires = [ "plasma-plasmashell.service" ];
+      After = [ "plasma-plasmashell.service" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${waywallen}/bin/waywallen --no-ui";
+      Restart = "on-failure";
+    };
+    Install.WantedBy = [ "plasma-workspace.target" ];
+  };
+
+  home.packages = with pkgs; [
+    waywallen
+    plasma-panel-colorizer
+    kde-rounded-corners
+    plasmusic-toolbar
+    kdePackages.krohnkite
+    kwin-script-geometry-change
+    tela-icon-theme
+    utterly-nord-plasma
+    utterly-round-plasma-style
+  ];
+
   # Explicit links take precedence over manually downloaded copies. Home
   # Manager backs existing files/directories up before replacing them.
   xdg.dataFile = {
-    "plasma/wallpapers/org.waywallen.kde".source =
-      "${waywallenWallpaper}/share/plasma/wallpapers/org.waywallen.kde";
+    "plasma/wallpapers/org.waywallen.kde".source = pkgs.fetchzip {
+      url = "https://github.com/waywallen/waywallen-display/releases/download/v0.4.2/waywallen-kde-0.4.2-x86_64-embed.zip";
+      hash = "sha256-hABN/J4o82YjB/szB24vHoeR2NvmLw9ZGrQeWLZyDWI=";
+    };
+    "waywallen/plugins/org.waywallen.open-wallpaper-engine".source = pkgs.fetchzip {
+      url = "https://github.com/waywallen/open-wallpaper-engine/releases/download/v0.3.0/org.waywallen.open-wallpaper-engine-0.3.0-linux-x86_64.zip";
+      hash = "sha256-JGZA4ZHf9ZCT5kqG7Pxb/pkbH46TC6nqy7vf+E4jF2c=";
+      stripRoot = false;
+    };
     "kwin/scripts/krohnkite".source =
       "${pkgs.kdePackages.krohnkite}/share/kwin/scripts/krohnkite";
     "kwin/effects/kwin4_effect_geometry_change".source =
@@ -114,8 +123,6 @@ in
       "${pkgs.utterly-round-plasma-style}/share/aurorae/themes/Utterly-Round-Dark";
     "aurorae/themes/Utterly-Round-Light-Solid".source =
       "${pkgs.utterly-round-plasma-style}/share/aurorae/themes/Utterly-Round-Light-Solid";
-    "plasma/plasmoids/com.github.runcatkde.runcat".source =
-      "${runcat}/share/plasma/plasmoids/com.github.runcatkde.runcat";
     "plasma/plasmoids/plasmusic-toolbar".source =
       "${pkgs.plasmusic-toolbar}/share/plasma/plasmoids/plasmusic-toolbar";
     "plasma/plasmoids/luisbocanegra.panel.colorizer".source =
@@ -125,16 +132,4 @@ in
     "color-schemes/LayanLight.colors".source =
       config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/local/share/color-schemes/LayanLight.colors";
   };
-
-  home.packages = with pkgs; [
-    plasma-panel-colorizer
-    kde-rounded-corners
-    plasmusic-toolbar
-    runcat
-    kdePackages.krohnkite
-    kwin-script-geometry-change
-    tela-icon-theme
-    utterly-nord-plasma
-    utterly-round-plasma-style
-  ];
 }

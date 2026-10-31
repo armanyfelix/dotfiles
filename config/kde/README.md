@@ -29,6 +29,18 @@ su copia local se mueve al respaldo durante la activación, si todavía existe.
 Los presets de Colorizer y el lanzador de Waywallen usan rutas estables,
 sin depender de hashes de generaciones antiguas del almacén Nix.
 
+Waywallen se declara completo en `home/kde.nix`: AppImage 0.4.4,
+complemento de Plasma 0.4.2 y Open Wallpaper Engine 0.3.0. El lanzador y
+el icono se toman del AppImage; los complementos se extraen con `fetchzip`.
+Sus actualizaciones se hacen cambiando las versiones y hashes en Nix, no
+desde la aplicación. Home Manager respalda las copias locales que sustituye.
+La unidad de usuario `waywallen.service` espera a `plasma-plasmashell.service`
+y arranca con `--no-ui`; el autoinicio antiguo queda oculto para evitar dos
+rutas de arranque. La activación selecciona `wallpaper_engine` en Discover
+sin reemplazar los demás ajustes de Waywallen.
+Open Wallpaper Engine implementa su propio renderizador; actualizarlo no
+garantiza que todos los fondos creados para la aplicación de Windows funcionen.
+
 No se enlaza todo `~/.config`: cachés, credenciales y estado de otras
 aplicaciones siguen separados. Tampoco se versiona `kwinoutputconfig.json`
 ni `session/`, que contienen estado específico de las pantallas/sesiones.

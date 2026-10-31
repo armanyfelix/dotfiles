@@ -61,9 +61,6 @@
   xdg.portal.config.common.default = "gtk";
 
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-36.9.5"
-  ];
 
   hardware.graphics.enable = true;
   hardware.nvidia = {

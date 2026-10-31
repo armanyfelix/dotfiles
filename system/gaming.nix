@@ -3,7 +3,6 @@
 {
   programs = {
     gamemode.enable = true;
-    gamescope.enable = true;
     nix-ld.enable = true;
     steam = {
       enable = true;
@@ -13,9 +12,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    (heroic.override {
-      extraPkgs = gamePkgs: [ gamePkgs.gamescope ];
-    })
     wineWow64Packages.stable
     wineWow64Packages.waylandFull
   ];

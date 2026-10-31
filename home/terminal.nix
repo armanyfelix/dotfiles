@@ -47,7 +47,7 @@
     # bat
     curl
     # fd
-    # fzf
+    fzf
     ripgrep
     eza
     # unzip
